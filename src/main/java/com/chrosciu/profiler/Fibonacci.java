@@ -23,12 +23,12 @@ public class Fibonacci {
     public static void main(String[] args) {
         Fibonacci fibonacci = new Fibonacci();
         System.out.println("1");
-        //sleep();
+        sleep();
         System.out.println("2");
         long f = fibonacci.fib(20);
         System.out.println("Result: " + f);
-        System.out.println("3");
-        //sleep();
-        System.out.println("4");
+//        System.out.println("3");
+//        //sleep();
+//        System.out.println("4");
     }
 }
