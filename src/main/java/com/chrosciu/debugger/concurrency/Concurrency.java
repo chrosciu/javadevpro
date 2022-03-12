@@ -15,7 +15,7 @@ class Concurrency {
     }
 
     private static void addIfAbsent(List<Integer> list, int x) {
-        synch`ronized (Concurrency.class) {
+        synchronized (Concurrency.class) {
             if (!list.contains(x)) {
                 list.add(x);
             }
