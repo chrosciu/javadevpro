@@ -10,7 +10,8 @@ class Task3 {
     static int findSubstringIndex(String pattern, String source) {
         boolean found = true;
         for (int i = 0; i < source.length() - pattern.length(); i++) {
-            for (int j = 0; j <= pattern.length(); j++) {
+            found = true;
+            for (int j = 0; j < pattern.length(); j++) {
                 if (source.charAt(i + j) != pattern.charAt(j)) {
                     found = false;
                     break;
