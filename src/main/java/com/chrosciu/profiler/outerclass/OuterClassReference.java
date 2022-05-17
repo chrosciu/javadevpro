@@ -1,4 +1,4 @@
-package com.chrosciu.profiler;
+package com.chrosciu.profiler.outerclass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,6 @@ class Outer {
 }
 
 public class OuterClassReference {
-
     private List<Outer> list = new ArrayList<>();
 
     public void populateList() {
@@ -21,22 +20,8 @@ public class OuterClassReference {
         }
     }
 
-    public static void sleep() {
-        try {
-            Thread.sleep(30000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
         OuterClassReference instance = new OuterClassReference();
-        System.out.println("1");
-        sleep();
-        System.out.println("2");
         instance.populateList();
-        System.out.println("3");
-        sleep();
-        System.out.println("4");
     }
 }
