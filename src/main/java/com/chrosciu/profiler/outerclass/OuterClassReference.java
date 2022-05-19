@@ -9,19 +9,32 @@ class Outer {
     Outer(Double x) {
         this.x = x;
     }
+
+    /* static */ class Inner {
+        final Double y;
+
+        Inner(Double y) {
+            this.y = y;
+        }
+    }
+
+    public Inner getInner(Double y) {
+        return new Inner(y);
+    }
 }
 
 public class OuterClassReference {
-    private List<Outer> list = new ArrayList<>();
+    private List<Outer.Inner> list = new ArrayList<>();
 
     public void populateList() {
         for (int i = 0; i < 10000000; i++) {
-            list.add(new Outer(Math.random()));
+            list.add(new Outer(Math.random()).getInner(Math.random()));
         }
     }
 
     public static void main(String[] args) {
         OuterClassReference instance = new OuterClassReference();
         instance.populateList();
+        System.out.println("After");
     }
 }
