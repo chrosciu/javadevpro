@@ -14,7 +14,7 @@ public class Fibonacci {
 
     public static void main(String[] args) {
         Fibonacci fibonacci = new Fibonacci();
-        long f = fibonacci.fib(50);
+        long f = fibonacci.fib(30);
         System.out.println("Result: " + f);
     }
 }

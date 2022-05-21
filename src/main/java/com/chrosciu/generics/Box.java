@@ -6,6 +6,7 @@ import java.util.List;
 public class Box<T> {
     private T item;
 
+
     public Box(T t) {
         this.item = t;
     }
@@ -73,14 +74,23 @@ class BoxUtils {
         for (Number n : list)
             s += n.doubleValue();
         return s;
+
+        //we can pass here List<Number>, List<Integer>, List<Double>, etc.
     }
 
     public static <E> void append(List<E> list, Class<E> clazz) throws Exception {
-        E elem = clazz.newInstance();  // compile-time error
+        //E elem = new E(); // compile-time error
+        E elem = clazz.newInstance();
         list.add(elem);
     }
 
-//we can pass here List<Number>, List<Integer>, List<Double>, etc.
+    public static void main(String[] args) {
+        Number[] numbers = new Number[2];
+        Object[] objects = numbers;
+        objects[0] = "A";
+    }
+
+
 }
 
 

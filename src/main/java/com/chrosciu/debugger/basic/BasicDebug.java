@@ -8,7 +8,7 @@ public class BasicDebug {
         System.out.println("Program started, waiting for input:");
         while (true) {
             int read = System.in.read();
-            //System.out.println("Input " + read);
+            System.out.println("Input " + read);
             if (filter(read)) {
                 process(read);
             }

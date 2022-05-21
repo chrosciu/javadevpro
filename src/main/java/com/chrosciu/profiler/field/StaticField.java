@@ -14,6 +14,7 @@ public class StaticField {
 
     public static void main(String[] args) throws InterruptedException {
         new StaticField().populateList();
+        list = null;
         System.out.println("After");
     }
 }
