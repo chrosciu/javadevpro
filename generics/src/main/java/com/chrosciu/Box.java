@@ -1,4 +1,4 @@
-package com.chrosciu.generics;
+package com.chrosciu;
 
 import java.util.ArrayList;
 import java.util.List;
