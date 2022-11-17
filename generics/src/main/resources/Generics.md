@@ -539,7 +539,8 @@ MobileDevice<Tablet> pc = new MobileDevice<>();
 
 ```
 
-- [ ]  Nie można stosować instanceof (wyjątek - unbunded wildcard, jako reifiable type)
+- [ ]  Nie można stosować generyków jako testu w instanceof (powoduje to błąd kompilacji).
+- [ ]  Wyjątkiem jest unbounded wildcard (jest on traktowany jako reifiable type, czyli taki, jaki nie traci informacji w runtime -> dlatego zarówno testowanie jak i rzutowanie jest bezpieczne)
 
 ```java
 public static <E> void rtti(List<E> list) {
@@ -608,81 +609,11 @@ public class Example {
 
 ### Zadania
 
-Stworzyć generyczną klasę `Pair<T, U>` reprezentującą parę dwóch obiektów: `first` o typie `T` i `second` o typie`U`. W podstawowej wersji wyposażyć ją  konstruktor przyjmujący obie składowe pary oraz gettery do obu pól.
-
-Stworzyć klasę `PairUtils`, będącą klasą oferującą publiczne statyczne metody użytkowe pracujące na klasie `Pair`. W klasie `PairUtils` zaimplementować metodę `Pair swap(Pair)` zwracającą nową parę powstającą przez zamianę pierwszego pola danej pary z drugą (np. `swap(Pair(4, "A"))` powinno zwrócić `Pair(A, "4")`).
-
-W klasie `PairUtils` zaimplementować metodę `void addToMap(Pair, Map)`,która to metoda powinna dołożyć nowy wpis do mapy podanej jako drugi argument. Kluczem powinno być pierwsze pole pary, wartością - drugie.
-
-W klasie `PairUtils` zaimplementować metodę `V combine(Pair, BiFunction)`, która powinna pozwolić na zastąpienie podanej pary wartością zwróconą przez zawołanie funkcji (będącej drugim argumentem) dla obu elementów pary (tzw. fold / reduce). Metoda ma zwracać obiekt typu `V`, który to również ma podlegać generyfikacji tak samo jak `T` i `U`
-
-W klasie `Pair` zaimplementować metodę `equals(Pair)` (**UWAGA**: to nie jest metoda odziedziczona z klasy `Object`) zwracającą `true` jeżeli para przekazana jako argument jest równa parze na której zawołano metodę i `false` w przeciwnym wypadku. Pary `p1` i `p2` traktujemy jako równe jeżeli dla ich pól zachodzi równość `p1.first.equals(p2.first)` oraz `p1.second.equals(p2.second)`
-
-W klasie `Pair` zaimplementować met[](https://)odę `equals(Object)` (odziedziczoną z klasy `Object`), wykorzystując metodę `equals(Pair)` napisaną w poprzednim punkcie. Działanie ma być następujące - jeżeli `Object` nie jest typu `Pair` od razu zwracamy `false`; w przeciwnym wypadku - wołamy metodę `equals(Pair)` i zwracamy jej wynik. Nadpisać również metodę `int hashCode()` tak aby zachować wymagany kontrakt z klasy `Object`
-
-Zmodyfikować za pomocą wildcardów wszystkie metody stworzone we wcześniejszych punktach, tak aby zapewnić maksymalną elastyczność ich używania - np. powinno być możliwe skompilowanie takiego kodu:
-
-```java
-Pair<Integer, Double> p1 = new Pair<>(3, 7.0);
-Map<Number, Number> map = new HashMap<>();
-PairUtils.addToMap(p1, map);
-```
-
-### Rozwiązanie zadań
-
-```java
-public class Pair<T extends Comparable<T>, U extends Comparable<U>> implements Comparable<Pair<? extends T, ? extends U>> {
-    private final T first;
-    private final U second;
-
-    public T getFirst() {
-        return first;
-    }
-
-    public U getSecond() {
-        return second;
-    }
-
-    public Pair(T first, U second) {
-        this.first = first;
-        this.second = second;
-    }
-
-    public boolean equals(Pair<?, ?> other) {
-        return this.first.equals(other.first) && this.second.equals(other.second);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        return o instanceof Pair<?, ?> && this.equals((Pair<?, ?>) o);
-    }
-
-    @Override
-    public int hashCode() {
-        return this.first.hashCode() + this.second.hashCode();
-    }
-
-    @Override
-    public int compareTo(Pair<? extends T, ? extends U> other) {
-        int firstCompareResult = other.first.compareTo(this.first);
-        return firstCompareResult != 0 ? firstCompareResult : other.second.compareTo(this.second);
-    }
-}
-
-class PairUtils {
-    public static <T extends Comparable<T>, U extends Comparable<U>> Pair<U, T> swap(Pair<? extends T, ? extends U> pair) {
-        return new Pair<>((U)(pair.getSecond()), (T)(pair.getFirst()));
-    }
-
-    public static <T extends Comparable<T>, U extends Comparable<U>> void addToMap(Pair<? extends T, ? extends U> pair, Map<? super T, ? super U> map) {
-        if (map.containsKey(pair.getFirst())) {
-            throw new IllegalStateException("Key already present");
-        }
-        map.put(pair.getFirst(), pair.getSecond());
-    }
-
-    public static <T extends Comparable<T>, U extends Comparable<U>, V> V combine(Pair<? extends T, ? extends U> pair, BiFunction<? super T, ? super U, ? extends V> combiner) {
-        return combiner.apply(pair.getFirst(), pair.getSecond());
-    }
-}
-```
+1. Stworzyć generyczną klasę `Pair<T, U>` reprezentującą parę dwóch obiektów: `first` o typie `T` i `second` o typie`U`. W podstawowej wersji wyposażyć ją  konstruktor przyjmujący obie składowe pary oraz gettery do obu pól.
+2. Stworzyć klasę `PairUtils`, będącą klasą oferującą publiczne statyczne metody użytkowe pracujące na klasie `Pair`. W klasie `PairUtils` zaimplementować metodę `Pair swap(Pair)` zwracającą nową parę powstającą przez zamianę pierwszego pola danej pary z drugą (np. `swap(Pair(4, "A"))` powinno zwrócić `Pair(A, "4")`).
+3. W klasie `PairUtils` zaimplementować metodę `void addToMap(Pair, Map)`,która to metoda powinna dołożyć nowy wpis do mapy podanej jako drugi argument. Kluczem powinno być pierwsze pole pary, wartością - drugie.
+4. W klasie `PairUtils` zaimplementować metodę `V combine(Pair, BiFunction)`, która powinna pozwolić na zastąpienie podanej pary wartością zwróconą przez zawołanie funkcji (będącej drugim argumentem) dla obu elementów pary (tzw. fold / reduce). Metoda ma zwracać obiekt typu `V`, który to również ma podlegać generyfikacji tak samo jak `T` i `U`
+5. Zmodyfikować za pomocą wildcardów wszystkie metody w klasie `PairUtils` stworzone we wcześniejszych punktach, tak aby zapewnić maksymalną elastyczność ich używania
+6. W klasie `Pair` zaimplementować metodę `equals(Pair)` (**UWAGA**: to nie jest metoda odziedziczona z klasy `Object`) zwracającą `true` jeżeli para przekazana jako argument jest równa parze na której zawołano metodę i `false` w przeciwnym wypadku. Pary `p1` i `p2` traktujemy jako równe jeżeli dla ich pól zachodzi równość `p1.first.equals(p2.first)` oraz `p1.second.equals(p2.second)`
+7. W klasie `Pair` zaimplementować metodę `equals(Object)` (odziedziczoną z klasy `Object`), wykorzystując metodę `equals(Pair)` napisaną w poprzednim punkcie. Działanie ma być następujące - jeżeli `Object` nie jest typu `Pair` od razu zwracamy `false`; w przeciwnym wypadku - wołamy metodę `equals(Pair)` i zwracamy jej wynik. Nadpisać również metodę `int hashCode()` tak aby zachować wymagany kontrakt z klasy `Object`
+8. Stworzyć klasę `ComparablePair<T,U>` dziedziczącą po `Pair` i implementującą interfejs `Comparable`. Zaimplementować metodę `compareTo()` w ten sposób aby wynikiem porównania byl wynik porównania pierwszych pól dwóch par, a gdy są one sobie równe - jako wynik zwrócić wynik porównania drugich pól.
