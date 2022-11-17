@@ -278,6 +278,115 @@ interface PayloadList<E,P> extends List<E> {
 ### Zacieranie typów
 
 - [ ]  Standardowo do typu Object, chyba że typ jest uwiązany
+- [ ]  Ale UWAGA! - w bytecode (View -> Show Bytecode) kompilator pozostawia tzw. sygnatury -> informacje dla debuggera i dekompilatora.
+- [ ]  NIE można ich jednak wykorzystać w runtime do odzyskania typu użytego w generyku - nawet za pomocą refleksji: [https://stackoverflow.com/questions/1942644/get-generic-type-of-java-util-list](https://stackoverflow.com/questions/1942644/get-generic-type-of-java-util-list)
+
+```java
+package com.chrosciu;
+
+public class SimpleBox {
+    Object elem;
+
+    public Object getElem() {
+        return elem;
+    }
+}
+```
+
+```
+// class version 55.0 (55)
+// access flags 0x21
+public class com/chrosciu/SimpleBox {
+
+        // compiled from: SimpleBox.java
+
+        // access flags 0x0
+        Ljava/lang/Object; elem
+
+// access flags 0x1
+public <init>()V
+        L0
+        LINENUMBER 3 L0
+        ALOAD 0
+        INVOKESPECIAL java/lang/Object.<init> ()V
+        RETURN
+        L1
+        LOCALVARIABLE this Lcom/chrosciu/SimpleBox; L0 L1 0
+        MAXSTACK = 1
+        MAXLOCALS = 1
+
+// access flags 0x1
+public getElem()Ljava/lang/Object;
+        L0
+        LINENUMBER 7 L0
+        ALOAD 0
+        GETFIELD com/chrosciu/SimpleBox.elem : Ljava/lang/Object;
+        ARETURN
+        L1
+        LOCALVARIABLE this Lcom/chrosciu/SimpleBox; L0 L1 0
+        MAXSTACK = 1
+        MAXLOCALS = 1
+        }
+```
+
+```java
+package com.chrosciu;
+
+public class GenericSimpleBox<T> {
+    T elem;
+
+    public T getElem() {
+        return elem;
+    }
+}
+```
+
+```
+// class version 55.0 (55)
+// access flags 0x21
+// signature <T:Ljava/lang/Object;>Ljava/lang/Object;
+// declaration: com/chrosciu/GenericSimpleBox<T>
+public class com/chrosciu/GenericSimpleBox {
+
+        // compiled from: GenericSimpleBox.java
+
+        // access flags 0x0
+        // signature TT;
+        // declaration: elem extends T
+        Ljava/lang/Object; elem
+
+// access flags 0x1
+public <init>()V
+        L0
+        LINENUMBER 3 L0
+        ALOAD 0
+        INVOKESPECIAL java/lang/Object.<init> ()V
+        RETURN
+        L1
+        LOCALVARIABLE this Lcom/chrosciu/GenericSimpleBox; L0 L1 0
+        // signature Lcom/chrosciu/GenericSimpleBox<TT;>;
+        // declaration: this extends com.chrosciu.GenericSimpleBox<T>
+        MAXSTACK = 1
+        MAXLOCALS = 1
+
+// access flags 0x1
+// signature ()TT;
+// declaration: T getElem()
+public getElem()Ljava/lang/Object;
+        L0
+        LINENUMBER 7 L0
+        ALOAD 0
+        GETFIELD com/chrosciu/GenericSimpleBox.elem : Ljava/lang/Object;
+        ARETURN
+        L1
+        LOCALVARIABLE this Lcom/chrosciu/GenericSimpleBox; L0 L1 0
+        // signature Lcom/chrosciu/GenericSimpleBox<TT;>;
+        // declaration: this extends com.chrosciu.GenericSimpleBox<T>
+        MAXSTACK = 1
+        MAXLOCALS = 1
+        }
+```
+
 - [ ]  Przy zacieraniu typu czasami kompilator musi "po cichu" wygenerować metody pomostowe (bridge methods)
 
 ```java
@@ -504,7 +613,7 @@ public class Example {
 3. W klasie `PairUtils` zaimplementować metodę `Pair swap(Pair)` zwracającą nową parę powstającą przez zamianę pierwszego pola danej pary z drugą (np. `swap(Pair(4, "A"))` powinno zwrócić `Pair(A, "4")`).
 4. W klasie `PairUtils` zaimplementować metodę `void addToMap(Pair, Map)`,która to metoda powinna dołożyć nowy wpis do mapy podanej jako drugi argument. Kluczem powinno być pierwsze pole pary, wartością - drugie.
 5. W klasie `PairUtils` zaimplementować metodę `V combine(Pair, BiFunction)`, która powinna pozwolić na zastąpienie podanej pary wartością zwróconą przez zawołanie funkcji (będącej drugim argumentem) dla obu elementów pary (tzw. fold / reduce). Metoda ma zwracać obiekt typu `V`, który to również ma podlegać generyfikacji tak samo jak `T` i `U`
-6. W klasie `Pair` zaimplementować metodę `equals(Pair)` (**UWAGA**: to nie jest metoda odziedziczona z klasy `Object`) zwracającą `true` jeżeli para przekazana jako argument jest równa parze na której zawołano metodę i `false` w przeciwnym wypadku. Pary `p1` i `p2` traktujemy jako równe jeżeli dla ich pól zachodzi równość `p1.first.equals(p2.first)` oraz `p1.second.equals(p2.second)`
+6. W klasie `Pair` zai[](https://)mplementować metodę `equals(Pair)` (**UWAGA**: to nie jest metoda odziedziczona z klasy `Object`) zwracającą `true` jeżeli para przekazana jako argument jest równa parze na której zawołano metodę i `false` w przeciwnym wypadku. Pary `p1` i `p2` traktujemy jako równe jeżeli dla ich pól zachodzi równość `p1.first.equals(p2.first)` oraz `p1.second.equals(p2.second)`
 7. W klasie `Pair` zaimplementować metodę `equals(Object)` (odziedziczoną z klasy `Object`), wykorzystując metodę `equals(Pair)` napisaną w poprzednim punkcie. Działanie ma być następujące - jeżeli `Object` nie jest typu `Pair` od razu zwracamy `false`; w przeciwnym wypadku - wołamy metodę `equals(Pair)` i zwracamy jej wynik. Nadpisać również metodę `int hashCode()` tak aby zachować wymagany kontrakt z klasy `Object`
 8. ~~Zmodyfikować klasę `Pair` tak aby implementowała interfejs `Comparable`. W celu ustalenia wyniku porównania dwóch par, porównać najpierw ich pierwsze elementy i jeżeli nie są one równe zwrócić wynik tego porównania. W przeciwnym wypadku zwrócić wynik porównania drugich elementów.~~
 9. Zmodyfikować za pomocą wildcardów wszystkie metody stworzone we wcześniejszych punktach, tak aby zapewnić maksymalną elastyczność ich używania - np. powinno być możliwe skompilowanie takiego kodu:
