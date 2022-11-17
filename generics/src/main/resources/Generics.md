@@ -608,15 +608,19 @@ public class Example {
 
 ### Zadania
 
-1. Stworzyć generyczną klasę `Pair<T, U>` reprezentującą parę dwóch obiektów: `first` o typie `T` i `second` o typie`U`. W podstawowej wersji wyposażyć ją w konstruktor przyjmujący obie składowe pary oraz gettery do obu pól.
-2. Stworzyć klasę `PairUtils`, będącą klasą oferującą publiczne statyczne metody użytkowe pracujące na klasie `Pair`.
-3. W klasie `PairUtils` zaimplementować metodę `Pair swap(Pair)` zwracającą nową parę powstającą przez zamianę pierwszego pola danej pary z drugą (np. `swap(Pair(4, "A"))` powinno zwrócić `Pair(A, "4")`).
-4. W klasie `PairUtils` zaimplementować metodę `void addToMap(Pair, Map)`,która to metoda powinna dołożyć nowy wpis do mapy podanej jako drugi argument. Kluczem powinno być pierwsze pole pary, wartością - drugie.
-5. W klasie `PairUtils` zaimplementować metodę `V combine(Pair, BiFunction)`, która powinna pozwolić na zastąpienie podanej pary wartością zwróconą przez zawołanie funkcji (będącej drugim argumentem) dla obu elementów pary (tzw. fold / reduce). Metoda ma zwracać obiekt typu `V`, który to również ma podlegać generyfikacji tak samo jak `T` i `U`
-6. W klasie `Pair` zai[](https://)mplementować metodę `equals(Pair)` (**UWAGA**: to nie jest metoda odziedziczona z klasy `Object`) zwracającą `true` jeżeli para przekazana jako argument jest równa parze na której zawołano metodę i `false` w przeciwnym wypadku. Pary `p1` i `p2` traktujemy jako równe jeżeli dla ich pól zachodzi równość `p1.first.equals(p2.first)` oraz `p1.second.equals(p2.second)`
-7. W klasie `Pair` zaimplementować metodę `equals(Object)` (odziedziczoną z klasy `Object`), wykorzystując metodę `equals(Pair)` napisaną w poprzednim punkcie. Działanie ma być następujące - jeżeli `Object` nie jest typu `Pair` od razu zwracamy `false`; w przeciwnym wypadku - wołamy metodę `equals(Pair)` i zwracamy jej wynik. Nadpisać również metodę `int hashCode()` tak aby zachować wymagany kontrakt z klasy `Object`
-8. ~~Zmodyfikować klasę `Pair` tak aby implementowała interfejs `Comparable`. W celu ustalenia wyniku porównania dwóch par, porównać najpierw ich pierwsze elementy i jeżeli nie są one równe zwrócić wynik tego porównania. W przeciwnym wypadku zwrócić wynik porównania drugich elementów.~~
-9. Zmodyfikować za pomocą wildcardów wszystkie metody stworzone we wcześniejszych punktach, tak aby zapewnić maksymalną elastyczność ich używania - np. powinno być możliwe skompilowanie takiego kodu:
+Stworzyć generyczną klasę `Pair<T, U>` reprezentującą parę dwóch obiektów: `first` o typie `T` i `second` o typie`U`. W podstawowej wersji wyposażyć ją  konstruktor przyjmujący obie składowe pary oraz gettery do obu pól.
+
+Stworzyć klasę `PairUtils`, będącą klasą oferującą publiczne statyczne metody użytkowe pracujące na klasie `Pair`. W klasie `PairUtils` zaimplementować metodę `Pair swap(Pair)` zwracającą nową parę powstającą przez zamianę pierwszego pola danej pary z drugą (np. `swap(Pair(4, "A"))` powinno zwrócić `Pair(A, "4")`).
+
+W klasie `PairUtils` zaimplementować metodę `void addToMap(Pair, Map)`,która to metoda powinna dołożyć nowy wpis do mapy podanej jako drugi argument. Kluczem powinno być pierwsze pole pary, wartością - drugie.
+
+W klasie `PairUtils` zaimplementować metodę `V combine(Pair, BiFunction)`, która powinna pozwolić na zastąpienie podanej pary wartością zwróconą przez zawołanie funkcji (będącej drugim argumentem) dla obu elementów pary (tzw. fold / reduce). Metoda ma zwracać obiekt typu `V`, który to również ma podlegać generyfikacji tak samo jak `T` i `U`
+
+W klasie `Pair` zaimplementować metodę `equals(Pair)` (**UWAGA**: to nie jest metoda odziedziczona z klasy `Object`) zwracającą `true` jeżeli para przekazana jako argument jest równa parze na której zawołano metodę i `false` w przeciwnym wypadku. Pary `p1` i `p2` traktujemy jako równe jeżeli dla ich pól zachodzi równość `p1.first.equals(p2.first)` oraz `p1.second.equals(p2.second)`
+
+W klasie `Pair` zaimplementować met[](https://)odę `equals(Object)` (odziedziczoną z klasy `Object`), wykorzystując metodę `equals(Pair)` napisaną w poprzednim punkcie. Działanie ma być następujące - jeżeli `Object` nie jest typu `Pair` od razu zwracamy `false`; w przeciwnym wypadku - wołamy metodę `equals(Pair)` i zwracamy jej wynik. Nadpisać również metodę `int hashCode()` tak aby zachować wymagany kontrakt z klasy `Object`
+
+Zmodyfikować za pomocą wildcardów wszystkie metody stworzone we wcześniejszych punktach, tak aby zapewnić maksymalną elastyczność ich używania - np. powinno być możliwe skompilowanie takiego kodu:
 
 ```java
 Pair<Integer, Double> p1 = new Pair<>(3, 7.0);
