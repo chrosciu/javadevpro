@@ -607,6 +607,10 @@ public class Example {
 }
 ```
 
+### Dodatkowe materiały
+
+* [ ]  [Angelika Langer -> Generics FAQ](http://www.angelikalanger.com/GenericsFAQ/JavaGenericsFAQ.html)
+
 ### Zadania
 
 1. Stworzyć generyczną klasę `Pair<T, U>` reprezentującą parę dwóch obiektów: `first` o typie `T` i `second` o typie`U`. W podstawowej wersji wyposażyć ją  konstruktor przyjmujący obie składowe pary oraz gettery do obu pól.
