@@ -38,10 +38,12 @@ public class ListUtils {
     }
 
     public static void main(String[] args) throws Exception {
+        List<Number> numList = List.of(1, 2.0f);
         List<Integer> intList = List.of(1, 2);
         List<Float> floatList = List.of(1.0f, 2.0f);
         List<Object> objectList = new ArrayList<>();
 
+        System.out.println(sumOfListAsDouble(numList));
         System.out.println(sumOfListAsDouble(intList));
         System.out.println(sumOfListAsDouble(floatList));
         //System.out.println(sumOfListAsDouble(objectList));
@@ -49,12 +51,12 @@ public class ListUtils {
         printList(intList);
         printList(floatList);
 
-        addIntToList(objectList, 3);
-        //addIntToList(floatList);
+        addIntToList(intList, 3, 4);
+        addIntToList(objectList, 3, 4);
+        //addIntToList(floatList, 3, 4);
 
         appendWithClass(objectList, String.class);
 
         printList(objectList);
-
     }
 }
