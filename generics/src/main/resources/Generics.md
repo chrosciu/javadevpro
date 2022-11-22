@@ -365,7 +365,7 @@ public <init>()V
         L1
         LOCALVARIABLE this Lcom/chrosciu/GenericSimpleBox; L0 L1 0
         // signature Lcom/chrosciu/GenericSimpleBox<TT;>;
-        // declaration: this extends com.chrosciu.GenericSimpleBox<T>
+        // declaration: this extends com.chrosciu.generics.GenericSimpleBox<T>
         MAXSTACK = 1
         MAXLOCALS = 1
 
@@ -381,7 +381,7 @@ public getElem()Ljava/lang/Object;
         L1
         LOCALVARIABLE this Lcom/chrosciu/GenericSimpleBox; L0 L1 0
         // signature Lcom/chrosciu/GenericSimpleBox<TT;>;
-        // declaration: this extends com.chrosciu.GenericSimpleBox<T>
+        // declaration: this extends com.chrosciu.generics.GenericSimpleBox<T>
         MAXSTACK = 1
         MAXLOCALS = 1
         }
@@ -451,9 +451,9 @@ public static void printList(List<?> list) {
 }
 ```
 
-- List<?> to tak naprawdę List<? extends Object>
-- List<?> to coś zupełnie innego niż List<Object> - do tej pierwszej można wstawić tylko wartości null, do drugiej dowolny obiekt
-- List<?> to nie to samo to co List  - druga nie zapewnia żadnej kontroli nad typami
+- `List<?>` to tak naprawdę `List<? extends Object>`
+- `List<?>` to coś zupełnie innego niż `List<Object>` - do tej pierwszej można wstawić tylko wartości null, do drugiej dowolny obiekt
+- `List<?>` to nie to samo to co `List`  - druga nie zapewnia żadnej kontroli nad typami
 
 - [ ]  Hierarchia typów z wildcardami:
 
@@ -615,7 +615,7 @@ public class Example {
 
 1. Stworzyć generyczną klasę `Pair<T, U>` reprezentującą parę dwóch obiektów: `first` o typie `T` i `second` o typie`U`. W podstawowej wersji wyposażyć ją  konstruktor przyjmujący obie składowe pary oraz gettery do obu pól.
 2. Stworzyć klasę `PairUtils`, będącą klasą oferującą publiczne statyczne metody użytkowe pracujące na klasie `Pair`. W klasie `PairUtils` zaimplementować metodę `Pair swap(Pair)` zwracającą nową parę powstającą przez zamianę pierwszego pola danej pary z drugą (np. `swap(Pair(4, "A"))` powinno zwrócić `Pair(A, "4")`).
-3. W klasie `PairUtils` zaimplementować metodę `void addToMap(Pair, Map)`,która to metoda powinna dołożyć nowy wpis do mapy podanej jako drugi argument. Kluczem powinno być pierwsze pole pary, wartością - drugie.
+3. W klasie `PairUtils` zaimplementować metodę `boolean addToMap(Pair, Map)`,która to metoda powinna dołożyć nowy wpis do mapy podanej jako drugi argument. Kluczem powinno być pierwsze pole pary, wartością - drugie. Jeżeli w mapie już istnieje taki klucz - metoda powinna zwrócić `false` bez dodawania wpisu do mapy. W przeciwnym wypadku - zwracamy `true`
 4. W klasie `PairUtils` zaimplementować metodę `V combine(Pair, BiFunction)`, która powinna pozwolić na zastąpienie podanej pary wartością zwróconą przez zawołanie funkcji (będącej drugim argumentem) dla obu elementów pary (tzw. fold / reduce). Metoda ma zwracać obiekt typu `V`, który to również ma podlegać generyfikacji tak samo jak `T` i `U`
 5. Zmodyfikować za pomocą wildcardów wszystkie metody w klasie `PairUtils` stworzone we wcześniejszych punktach, tak aby zapewnić maksymalną elastyczność ich używania
 6. W klasie `Pair` zaimplementować metodę `equals(Pair)` (**UWAGA**: to nie jest metoda odziedziczona z klasy `Object`) zwracającą `true` jeżeli para przekazana jako argument jest równa parze na której zawołano metodę i `false` w przeciwnym wypadku. Pary `p1` i `p2` traktujemy jako równe jeżeli dla ich pól zachodzi równość `p1.first.equals(p2.first)` oraz `p1.second.equals(p2.second)`

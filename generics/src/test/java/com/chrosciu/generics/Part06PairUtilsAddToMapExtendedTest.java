@@ -1,4 +1,4 @@
-package com.chrosciu;
+package com.chrosciu.generics;
 
 import org.junit.jupiter.api.Test;
 

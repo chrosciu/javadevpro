@@ -1,4 +1,4 @@
-package com.chrosciu;
+package com.chrosciu.generics;
 
 
 public class CharSequenceBox<T extends CharSequence> {

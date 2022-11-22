@@ -1,4 +1,4 @@
-package com.chrosciu;
+package com.chrosciu.generics;
 
 
 public class ComparableCharSequenceBox<T extends CharSequence & Comparable<T>> {

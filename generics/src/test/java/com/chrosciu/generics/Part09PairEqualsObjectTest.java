@@ -1,14 +1,14 @@
-package com.chrosciu;
+package com.chrosciu.generics;
 
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class Part08PairEqualsPairTest {
+class Part09PairEqualsObjectTest {
     @Test
     void twoPairsShouldBeEqualIfTheirFieldsAreEqual() {
-        Pair<Integer, String> pair1 = new Pair<>(1, "A");
-        Pair<Number, CharSequence> pair2 = new Pair<>(1, "A");
+        Object pair1 = new Pair<>(1, "A");
+        Object pair2 = new Pair<>(1, "A");
 
         assertThat(pair1.equals(pair2)).isTrue();
         assertThat(pair2.equals(pair1)).isTrue();
@@ -16,9 +16,9 @@ class Part08PairEqualsPairTest {
 
     @Test
     void twoPairsShouldNotBeEqualIfTheirFieldsAreDifferent() {
-        Pair<Integer, String> pair1 = new Pair<>(1, "A");
-        Pair<Number, CharSequence> pair2 = new Pair<>(1, "B");
-        Pair<Number, CharSequence> pair3 = new Pair<>(2, "A");
+        Object pair1 = new Pair<>(1, "A");
+        Object pair2 = new Pair<>(1, "B");
+        Object pair3 = new Pair<>(2, "A");
 
         assertThat(pair1.equals(pair2)).isFalse();
         assertThat(pair2.equals(pair1)).isFalse();
