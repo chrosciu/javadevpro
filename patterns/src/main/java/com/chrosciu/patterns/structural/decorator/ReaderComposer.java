@@ -10,9 +10,12 @@ public class ReaderComposer {
     }
 
     public Reader compose(Reader reader) {
-        //TODO: Implement
+        if (lowerCaseEnabled) {
+            reader = new LowerCaseReaderDecorator(reader);
+        }
+        if (underscoreEnabled) {
+            reader = new UnderscoreReaderDecorator(reader);
+        }
         return reader;
     }
-
-    //Hint for underscore operation: user String.replaceAll("\\s", "_")
 }
