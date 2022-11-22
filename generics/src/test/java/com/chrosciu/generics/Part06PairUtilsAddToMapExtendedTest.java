@@ -1,4 +1,4 @@
-package com.chrosciu;
+package com.chrosciu.generics;
 
 class Part06PairUtilsAddToMapExtendedTest {
 //    @Test

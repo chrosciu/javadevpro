@@ -1,4 +1,4 @@
-package com.chrosciu;
+package com.chrosciu.generics;
 
 public class SimpleBoxUtils {
     public static <U> Box<U> copyBox(Box<U> box) {

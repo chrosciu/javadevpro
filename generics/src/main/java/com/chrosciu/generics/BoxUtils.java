@@ -1,4 +1,4 @@
-package com.chrosciu;
+package com.chrosciu.generics;
 
 class BoxUtils {
     public static <T extends Integer> int getBoxValue(Box<T> box) {

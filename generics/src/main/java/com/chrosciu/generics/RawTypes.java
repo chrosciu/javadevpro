@@ -1,4 +1,4 @@
-package com.chrosciu;
+package com.chrosciu.generics;
 
 public class RawTypes {
     public static void main(String[] args) {

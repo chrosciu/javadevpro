@@ -365,7 +365,7 @@ public <init>()V
         L1
         LOCALVARIABLE this Lcom/chrosciu/GenericSimpleBox; L0 L1 0
         // signature Lcom/chrosciu/GenericSimpleBox<TT;>;
-        // declaration: this extends com.chrosciu.GenericSimpleBox<T>
+        // declaration: this extends com.chrosciu.generics.GenericSimpleBox<T>
         MAXSTACK = 1
         MAXLOCALS = 1
 
@@ -381,7 +381,7 @@ public getElem()Ljava/lang/Object;
         L1
         LOCALVARIABLE this Lcom/chrosciu/GenericSimpleBox; L0 L1 0
         // signature Lcom/chrosciu/GenericSimpleBox<TT;>;
-        // declaration: this extends com.chrosciu.GenericSimpleBox<T>
+        // declaration: this extends com.chrosciu.generics.GenericSimpleBox<T>
         MAXSTACK = 1
         MAXLOCALS = 1
         }
