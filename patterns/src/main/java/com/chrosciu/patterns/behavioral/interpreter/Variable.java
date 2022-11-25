@@ -11,7 +11,6 @@ public class Variable implements Expression {
 
     @Override
     public double evaluate(Map<String, Double> context) {
-        //TODO: Implement
-        throw new UnsupportedOperationException();
+        return context.get(name);
     }
 }

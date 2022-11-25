@@ -11,8 +11,6 @@ public class Literal implements Expression {
 
     @Override
     public double evaluate(Map<String, Double> context) {
-        //TODO: Implement
-        throw new UnsupportedOperationException();
+        return value;
     }
-
 }
