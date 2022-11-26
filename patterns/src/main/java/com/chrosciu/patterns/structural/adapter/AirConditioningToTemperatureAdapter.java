@@ -1,11 +1,10 @@
 package com.chrosciu.patterns.structural.adapter;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class AirConditioningToTemperatureAdapter implements TemperatureController {
     private final AirConditioningController airConditioningController;
-
-    public AirConditioningToTemperatureAdapter(AirConditioningController airConditioningController) {
-        this.airConditioningController = airConditioningController;
-    }
 
     @Override
     public void temperatureUp(double deltaInCelsius) {

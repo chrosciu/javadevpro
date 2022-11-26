@@ -1,6 +1,8 @@
 package com.chrosciu.patterns.behavioral.memento;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
 
@@ -31,11 +33,8 @@ public class Account {
         locked = Boolean.parseBoolean(values[1]);
     }
 
+    @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
     public class Memento {
         private final String state;
-
-        private Memento(String state) {
-            this.state = state;
-        }
     }
 }
