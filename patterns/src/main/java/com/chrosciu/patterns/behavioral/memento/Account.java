@@ -1,21 +1,16 @@
 package com.chrosciu.patterns.behavioral.memento;
 
+import lombok.Getter;
+
 import java.math.BigDecimal;
 
 import static java.math.BigDecimal.ZERO;
 
+@Getter
 public class Account {
     private boolean locked = false;
     private BigDecimal balance = ZERO;
     private static final String SEPARATOR = ";";
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public boolean isLocked() {
-        return locked;
-    }
 
     public void deposit(BigDecimal value) {
         balance = balance.add(value);

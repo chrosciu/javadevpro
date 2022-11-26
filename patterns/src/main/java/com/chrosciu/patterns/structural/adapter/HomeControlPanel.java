@@ -1,11 +1,10 @@
 package com.chrosciu.patterns.structural.adapter;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class HomeControlPanel {
     private final TemperatureController temperatureController;
-
-    public HomeControlPanel(TemperatureController temperatureController) {
-        this.temperatureController = temperatureController;
-    }
 
     public void heat() {
         temperatureController.temperatureUp(20);

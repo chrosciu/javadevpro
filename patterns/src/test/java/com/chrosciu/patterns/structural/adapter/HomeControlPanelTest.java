@@ -17,14 +17,14 @@ public class HomeControlPanelTest {
     void heatTest() {
         homeControlPanel.heat();
 
-        Assertions.assertThat(airConditioningController.getTemperature()).isEqualTo(68.0);
+        Assertions.assertThat(airConditioningController.getTemperatureInFahrenheit()).isEqualTo(68.0);
     }
 
     @Test
     void coolTest() {
         homeControlPanel.cool();
 
-        Assertions.assertThat(airConditioningController.getTemperature()).isEqualTo(14.0);
+        Assertions.assertThat(airConditioningController.getTemperatureInFahrenheit()).isEqualTo(14.0);
     }
 
 }
