@@ -18,10 +18,10 @@ public class DriverTest {
 
     @Test
     public void shouldDriveTeslaVehicle() {
-        Vehicle vehicle = new TeslaVehicle();
+        TeslaVehicle teslaVehicle = new TeslaVehicle();
 
-        driver.drive(vehicle);
+        driver.driveTesla(teslaVehicle);
 
-        assertThat(vehicle.getLog()).containsExactly("Engine started", "Let's ride!", "Engine stopped");
+        assertThat(teslaVehicle.getLog()).containsExactly("Engine started", "Let's ride!", "Engine stopped");
     }
 }

@@ -1,6 +1,6 @@
 package com.chrosciu.solid.liskov;
 
-public class TeslaVehicle extends Vehicle {
+public class TeslaVehicle extends AbstractVehicle {
     private boolean charged = false;
 
     public void chargeBatteries() {
