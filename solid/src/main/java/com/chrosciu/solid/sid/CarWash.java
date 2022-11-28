@@ -3,14 +3,13 @@ package com.chrosciu.solid.sid;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class WaxCarWash implements CarWashing {
+public class CarWash implements CarWashing {
     private final Log log;
-    
+
     @Override
     public void wash() {
         washBody();
         washWindows();
-        waxBody();
     }
 
     private void washBody() {
@@ -19,9 +18,5 @@ public class WaxCarWash implements CarWashing {
 
     private void washWindows() {
         log.addMessage("Washing windows");
-    }
-
-    private void waxBody() {
-        log.addMessage("Waxing body");
     }
 }

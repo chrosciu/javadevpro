@@ -1,0 +1,22 @@
+package com.chrosciu.solid.sid;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+public class CarVacuum implements CarVacuuming {
+    private final Log log;
+
+    @Override
+    public void vacuum() {
+        vacuumDashboard();
+        vacuumSeats();
+    }
+
+    private void vacuumDashboard() {
+        log.addMessage("Vacuuming dashboard");
+    }
+
+    private void vacuumSeats() {
+        log.addMessage("Vacuuming seats");
+    }
+}

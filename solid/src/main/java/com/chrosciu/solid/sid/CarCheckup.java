@@ -1,15 +1,17 @@
 package com.chrosciu.solid.sid;
 
-public class CarCheckup {
-    private final CarService carService;
+import lombok.RequiredArgsConstructor;
 
-    public CarCheckup(Log log) {
-        this.carService = new CarService(log);
-    }
+@RequiredArgsConstructor
+public class CarCheckup {
+    private final CarLiquidsChecking carLiquidsChecking;
+    private final CarVacuuming carVacuuming;
+    private final CarWashing carWashing;
+
 
     public void performCheckup() {
-        carService.checkLiquids();
-        carService.vacuum();
-        carService.wash();
+        carLiquidsChecking.checkLiquids();
+        carVacuuming.vacuum();
+        carWashing.wash();
     }
 }
