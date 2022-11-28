@@ -20,6 +20,10 @@ public class CarService {
         log.addMessage("Checking windscreen washer");
     }
 
+    private void checkBrakeFluid() {
+        log.addMessage("Checking brake fluid");
+    }
+
     public void vacuum() {
         vacuumDashboard();
         vacuumSeats();
@@ -44,9 +48,5 @@ public class CarService {
 
     private void washWindows() {
         log.addMessage("Washing windows");
-    }
-
-    private void checkBrakeFluid() {
-        log.addMessage("Checking brake fluid");
     }
 }
