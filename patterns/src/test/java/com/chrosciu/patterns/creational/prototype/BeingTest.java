@@ -10,6 +10,7 @@ public class BeingTest {
         Being being = new Person("Marcin", "Chrost", 40);
         Being beingCopy = null;
 
+        assertThat(beingCopy).isNotSameAs(being);
         assertThat(beingCopy).isEqualTo(being);
     }
 
@@ -18,6 +19,7 @@ public class BeingTest {
         Being being = new Animal("Maja");
         Being beingCopy = null;
 
+        assertThat(beingCopy).isNotSameAs(being);
         assertThat(beingCopy).isEqualTo(being);
     }
 }

@@ -10,6 +10,7 @@ public class PersonTest {
         Person person = new Person("Marcin", "Chrost", 40);
         Person personCopy = null;
 
+        assertThat(personCopy).isNotSameAs(person);
         assertThat(personCopy).isEqualTo(person);
     }
 }
