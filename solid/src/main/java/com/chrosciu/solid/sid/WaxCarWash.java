@@ -1,5 +1,6 @@
 package com.chrosciu.solid.sid;
 
+import com.chrosciu.solid.utils.Log;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

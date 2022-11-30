@@ -1,24 +1,23 @@
 package com.chrosciu.solid.liskov;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.chrosciu.solid.utils.Log;
+import lombok.RequiredArgsConstructor;
 
+import static lombok.AccessLevel.PROTECTED;
+
+@RequiredArgsConstructor(access = PROTECTED)
 public abstract class AbstractVehicle {
-    private final List<String> log = new ArrayList<>();
-
-    public List<String> getLog() {
-        return List.copyOf(log);
-    }
+    private final Log log;
 
     public void startEngine() {
-        log.add("Engine started");
+        log.addMessage("Engine started");
     }
 
     public void ride() {
-        log.add("Let's ride!");
+        log.addMessage("Let's ride!");
     }
 
     public void stopEngine() {
-        log.add("Engine stopped");
+        log.addMessage("Engine stopped");
     }
 }

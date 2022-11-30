@@ -1,27 +1,30 @@
 package com.chrosciu.solid.liskov;
 
+import com.chrosciu.solid.utils.InMemoryLog;
+import com.chrosciu.solid.utils.Log;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DriverTest {
+    private final Log log = new InMemoryLog();
     private final Driver driver = new Driver();
 
     @Test
     public void shouldDriveVehicle() {
-        Vehicle vehicle = new Vehicle();
+        Vehicle vehicle = new Vehicle(log);
 
         driver.drive(vehicle);
 
-        assertThat(vehicle.getLog()).containsExactly("Engine started", "Let's ride!", "Engine stopped");
+        assertThat(log.getMessages()).containsExactly("Engine started", "Let's ride!", "Engine stopped");
     }
 
     @Test
     public void shouldDriveTeslaVehicle() {
-        TeslaVehicle teslaVehicle = new TeslaVehicle();
+        TeslaVehicle teslaVehicle = new TeslaVehicle(log);
 
         driver.driveTesla(teslaVehicle);
 
-        assertThat(teslaVehicle.getLog()).containsExactly("Engine started", "Let's ride!", "Engine stopped");
+        assertThat(log.getMessages()).containsExactly("Engine started", "Let's ride!", "Engine stopped");
     }
 }

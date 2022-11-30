@@ -8,7 +8,6 @@ public class CarCheckup {
     private final CarVacuuming carVacuuming;
     private final CarWashing carWashing;
 
-
     public void performCheckup() {
         carLiquidsChecking.checkLiquids();
         carVacuuming.vacuum();

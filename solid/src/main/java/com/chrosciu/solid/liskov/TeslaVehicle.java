@@ -1,6 +1,13 @@
 package com.chrosciu.solid.liskov;
 
+
+import com.chrosciu.solid.utils.Log;
+
 public class TeslaVehicle extends AbstractVehicle {
+    public TeslaVehicle(Log log) {
+        super(log);
+    }
+
     private boolean charged = false;
 
     public void chargeBatteries() {

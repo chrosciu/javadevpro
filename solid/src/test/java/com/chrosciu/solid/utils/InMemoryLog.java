@@ -1,4 +1,6 @@
-package com.chrosciu.solid.sid;
+package com.chrosciu.solid.utils;
+
+import com.chrosciu.solid.utils.Log;
 
 import java.util.ArrayList;
 import java.util.List;
