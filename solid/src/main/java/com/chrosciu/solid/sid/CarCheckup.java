@@ -1,5 +1,7 @@
 package com.chrosciu.solid.sid;
 
+import com.chrosciu.solid.utils.Log;
+
 public class CarCheckup {
     private final CarService carService;
 
