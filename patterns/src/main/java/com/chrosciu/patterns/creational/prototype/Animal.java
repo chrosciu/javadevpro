@@ -9,4 +9,9 @@ import lombok.RequiredArgsConstructor;
 @EqualsAndHashCode
 public class Animal implements Being {
     private final String name;
+
+    @Override
+    public Being copy() {
+        return new Animal(name);
+    }
 }

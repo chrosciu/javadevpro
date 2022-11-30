@@ -13,4 +13,14 @@ public class Person implements Being {
         name = firstName + " " + lastName;
         this.age = age;
     }
+
+    public Person(Person original) {
+        this.name = original.name;
+        this.age = original.age;
+    }
+
+    @Override
+    public Being copy() {
+        return new Person(this);
+    }
 }
