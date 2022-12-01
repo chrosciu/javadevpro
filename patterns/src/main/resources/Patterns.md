@@ -1,5 +1,27 @@
 # Wzorce projektowe
 
+## Kreacyjne
+
+### Singleton
+
+* Korzystamy z niego gdy nie możemy się zgodzić na więcej niż jedną instancję danej klasy
+* Można powiedzieć że taka instancja jest ulepszoną wersją zmiennej globalnej
+* Implementacja jest prosta - ukrywamy konstruktor i udostępniamy statyczną metodę zwracającą instancję (którą trzymamy jako prywatne pole statyczne)
+* Uwaga na środowisko wielowątkowe - konieczne są blokady !
+* Więcej informacji: [https://refactoring.guru/pl/design-patterns/singleton](https://refactoring.guru/pl/design-patterns/singleton)
+
+### Prototyp
+
+* Pozwala na stworzenie instancji obiektu poprzez skopiowanie istniejącego - oraz zrzuca odpowiedzialność za tę czynność na kopiowany obiekt
+* Stosujemy gdy:
+  * obiekt nie udostępnia na zewnątrz pól, które są niezbędne by go zbudować od nowa
+  * mamy do czynienia z interfejsem i nie wiemy jaka konkretna klasa się pod nim kryje
+* Wzorcowa implementacja zakłada zdefiniowanie metody clone, ale akurat w Javie ta metoda i intrfejs Cloneable jest bardzo średnio zaprojektowany[](https://): [https://devcave.pl/effective-java/metoda-clone](https://devcave.pl/effective-java/metoda-clone)
+* Dlatego zrobimy to inaczej:
+  * Jeśli mamy konkretną klasę to najlepszym wyjściem jest konstruktor kopiujący
+  * W przypadku interfejsu definiujemy metodę copy (która pod spodem woła ww. konstruktor)
+* Więcej informacji: [https://refactoring.guru/pl/design-patterns/prototype](https://refactoring.guru/pl/design-patterns/prototype)
+
 ## Behawioralne
 
 ### Iterator
