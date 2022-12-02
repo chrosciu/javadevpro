@@ -12,6 +12,7 @@
         <module>generics</module>
         <module>patterns</module>
         <module>solid</module>
+        <module>cleancode</module>
     </modules>
     <dependencies>
         <dependency>
