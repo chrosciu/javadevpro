@@ -1,4 +1,4 @@
-package com.chrosciu;
+package com.chrosciu.generics;
 
 import java.util.Map;
 import java.util.function.BiFunction;

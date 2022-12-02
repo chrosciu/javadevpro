@@ -1,4 +1,4 @@
-package com.chrosciu;
+package com.chrosciu.generics;
 
 public class ComparablePair<T extends Comparable<T>, U extends Comparable<U>> extends Pair<T, U> implements Comparable<ComparablePair<T, U>> {
     public ComparablePair(T first, U second) {
