@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 class City {
+    public static final City NULL = new City("", 0);
+
     private final String name;
     private final int population;
 
@@ -21,17 +23,17 @@ class City {
     }
 }
 
+
+
 class CityQuery {
     public List<City> getCities() {
         List<City> cities = new ArrayList<>();
         cities.add(new City("Krakow", 1000000));
-        cities.add(null);
+        cities.add(City.NULL);
         cities.add(new City("Katowice", 300000));
         return cities;
     }
 }
-
-
 
 public class SpecialCasePattern {
     public static void main(String[] args) {
@@ -39,9 +41,7 @@ public class SpecialCasePattern {
         int totalPopulation = 0;
         List<City> cities = cityQuery.getCities();
         for (City c: cities) {
-            if (c != null) {
-                totalPopulation += c.getPopulation();
-            }
+            totalPopulation += c.getPopulation();
         }
         System.out.println(totalPopulation);
     }
