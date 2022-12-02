@@ -1,20 +1,25 @@
 package com.chrosciu.cleancode.coupling;
 
-class Person {
+interface Nameable {
+    String getName();
+}
+
+class Person implements Nameable {
     private final String name;
 
     public Person(String name) {
         this.name = name;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 }
 
 class Display {
-    public void displayName(Person person) {
-        System.out.println(person.getName());
+    public void displayName(Nameable nameable) {
+        System.out.println(nameable.getName());
     }
 }
 
