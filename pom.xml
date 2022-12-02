@@ -13,6 +13,8 @@
         <module>patterns</module>
         <module>solid</module>
         <module>cleancode</module>
+        <module>debugger</module>
+        <module>profiler</module>
     </modules>
     <dependencies>
         <dependency>
