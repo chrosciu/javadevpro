@@ -1,15 +1,7 @@
 package com.chrosciu.cleancode.cohesion;
 
-class FooBar {
+class Foo {
     private int foo = 3;
-    private int bar = 7;
-
-    public void doStuff() {
-        if (bar > 0) {
-            bar = bar - 1;
-            System.out.println(bar);
-        }
-    }
 
     public void doOtherStuff() {
         if (foo < 10) {
@@ -19,10 +11,22 @@ class FooBar {
     }
 }
 
+class Bar {
+    private int bar = 7;
+
+    public void doStuff() {
+        if (bar > 0) {
+            bar = bar - 1;
+            System.out.println(bar);
+        }
+    }
+}
+
 public class LowCohesion {
     public static void main(String[] args) {
-        FooBar fooBar = new FooBar();
-        fooBar.doStuff();
-        fooBar.doOtherStuff();
+        Bar bar = new Bar();
+        bar.doStuff();
+        Foo foo = new Foo();
+        foo.doOtherStuff();
     }
 }
