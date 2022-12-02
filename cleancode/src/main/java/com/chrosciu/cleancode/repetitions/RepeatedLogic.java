@@ -1,34 +1,34 @@
 package com.chrosciu.cleancode.repetitions;
 
 enum Shape {
-    LINE,
-    TRIANGLE,
-    SQUARE
+    LINE("Section", 2),
+    TRIANGLE("Triangle", 3),
+    SQUARE("Square", 4);
+
+    private final String name;
+    private final int edges;
+
+    Shape(String name, int edges) {
+        this.name = name;
+        this.edges = edges;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getEdges() {
+        return edges;
+    }
 }
 
 class ShapeUtils {
     public String getName(Shape shape) {
-        switch (shape) {
-            case LINE:
-                return "Section";
-            case TRIANGLE:
-                return "Triangle";
-            case SQUARE:
-                return "Square";
-        }
-        throw new IllegalStateException("Should never happen");
+        return shape.getName();
     }
 
     public int getNumberOfEdges(Shape shape) {
-        switch (shape) {
-            case LINE:
-                return 2;
-            case TRIANGLE:
-                return 3;
-            case SQUARE:
-                return 4;
-        }
-        throw new IllegalStateException("Should never happen");
+        return shape.getEdges();
     }
 }
 
