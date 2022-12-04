@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Iterators {
     public static <E> Iterator<E> regularIterator(List<E> list) {
-        return null;
+        return list.iterator();
     }
 
     public static <E> Iterator<E> reverseIterator(List<E> list) {
