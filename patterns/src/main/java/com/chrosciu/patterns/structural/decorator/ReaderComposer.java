@@ -8,7 +8,9 @@ public class ReaderComposer {
     private final boolean underscoreEnabled;
 
     public Reader compose(Reader reader) {
-        //TODO: Implement
+        if (lowerCaseEnabled) {
+            reader = new LowerCaseReaderDecorator(reader);
+        }
         return reader;
     }
 
