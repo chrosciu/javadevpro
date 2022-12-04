@@ -8,7 +8,7 @@ public class PersonTest {
     @Test
     public void shouldAllowToCopyItself() {
         Person person = new Person("Marcin", "Chrost", 40);
-        Person personCopy = null;
+        Person personCopy = new Person(person);
 
         assertThat(personCopy).isNotSameAs(person);
         assertThat(personCopy).isEqualTo(person);
