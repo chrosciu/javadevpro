@@ -9,6 +9,18 @@ public class Iterators {
     }
 
     public static <E> Iterator<E> reverseIterator(List<E> list) {
-        return null;
+        return new Iterator<E>() {
+            private int currentElemIndex = list.size() - 1;
+
+            @Override
+            public boolean hasNext() {
+                return currentElemIndex >= 0;
+            }
+
+            @Override
+            public E next() {
+                return list.get(currentElemIndex--);
+            }
+        };
     }
 }
