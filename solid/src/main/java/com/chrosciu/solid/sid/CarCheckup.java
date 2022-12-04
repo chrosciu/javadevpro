@@ -1,13 +1,10 @@
 package com.chrosciu.solid.sid;
 
-import com.chrosciu.solid.utils.Log;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class CarCheckup {
     private final CarService carService;
-
-    public CarCheckup(Log log) {
-        this.carService = new CarService(log);
-    }
 
     public void performCheckup() {
         carService.checkLiquids();

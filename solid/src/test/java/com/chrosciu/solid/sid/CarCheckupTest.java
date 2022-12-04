@@ -8,7 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarCheckupTest {
     private final Log log = new InMemoryLog();
-    private final CarCheckup carCheckup = new CarCheckup(log);
+    private final CarService carService = new CarServiceImpl(log);
+    private final CarCheckup carCheckup = new CarCheckup(carService);
     private final CarCheckup waxCarCheckup = null;
 
     @Test
