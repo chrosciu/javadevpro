@@ -4,7 +4,7 @@ import com.chrosciu.solid.utils.Log;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class CarServiceImpl implements CarService {
+public class CarServiceImpl implements CarCheckLiquids, CarVacuum, CarWash {
     private final Log log;
 
     @Override
