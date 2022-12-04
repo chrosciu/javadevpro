@@ -4,9 +4,20 @@ import com.chrosciu.solid.utils.Log;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class WaxCarWash {
+public class WaxCarWash implements CarService {
     private final Log log;
-    
+
+    @Override
+    public void checkLiquids() {
+        throw new UnsupportedOperationException("Cannot check liquids!");
+    }
+
+    @Override
+    public void vacuum() {
+        throw new UnsupportedOperationException("Cannot vacuum!");
+    }
+
+    @Override
     public void wash() {
         washBody();
         washWindows();
