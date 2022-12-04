@@ -2,6 +2,7 @@ package com.chrosciu.solid.ocp;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.EnumSet;
 import java.util.List;
 
 import static com.chrosciu.solid.ocp.Color.BLACK;
@@ -25,6 +26,7 @@ public class CarSearchTest {
 
     @Test
     public void shouldBeAbleToPerformSearchByMaxPrice() {
+        int maxPrice = 1200;
         List<Car> foundCars = List.of();
 
         assertThat(foundCars).containsExactlyInAnyOrder(FIAT_PUNTO, POLONEZ_CARO);
@@ -32,6 +34,7 @@ public class CarSearchTest {
 
     @Test
     public void shouldBeAbleToPerformSearchByColors() {
+        EnumSet<Color> colors = EnumSet.of(WHITE);
         List<Car> foundCars = List.of();
 
         assertThat(foundCars).containsExactlyInAnyOrder(POLONEZ_CARO, VW_PASSAT);
