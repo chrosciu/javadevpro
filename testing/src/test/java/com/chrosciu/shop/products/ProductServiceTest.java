@@ -2,19 +2,22 @@ package com.chrosciu.shop.products;
 
 import org.assertj.core.api.Assertions;
 import org.javamoney.moneta.FastMoney;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public class ProductServiceTest {
     private static final Product VIDEO_PRODUCT = Product.builder()
             .name("Spring masterclass")
@@ -32,14 +35,11 @@ public class ProductServiceTest {
 
     private static final long VIDEO_PRODUCT_ID = 137L;
 
+    @Mock
     private ProductRepository productRepository;
-    private ProductService productService;
 
-    @BeforeEach
-    public void setUp() {
-        productRepository = mock(ProductRepository.class);
-        productService = new ProductService(productRepository);
-    }
+    @InjectMocks
+    private ProductService productService;
 
     @Test
     public void shouldReturnProductWithGivenId() {
