@@ -2,6 +2,7 @@ package com.chrosciu.shop.products;
 
 import org.assertj.core.api.Assertions;
 import org.javamoney.moneta.FastMoney;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
@@ -31,11 +32,18 @@ public class ProductServiceTest {
 
     private static final long VIDEO_PRODUCT_ID = 137L;
 
+    private ProductRepository productRepository;
+    private ProductService productService;
+
+    @BeforeEach
+    public void setUp() {
+        productRepository = mock(ProductRepository.class);
+        productService = new ProductService(productRepository);
+    }
+
     @Test
     public void shouldReturnProductWithGivenId() {
         //given
-        ProductRepository productRepository = mock(ProductRepository.class);
-        ProductService productService = new ProductService(productRepository);
         when(productRepository.findById(VIDEO_PRODUCT_ID)).thenReturn(Optional.of(VIDEO_PRODUCT));
 
         //when
@@ -48,8 +56,6 @@ public class ProductServiceTest {
     @Test
     public void shouldReturnProductWithGivenIdWithLambda() {
         //given
-        ProductRepository productRepository = mock(ProductRepository.class);
-        ProductService productService = new ProductService(productRepository);
         doAnswer(invocation -> {
             long id = invocation.getArgument(0, Long.class);
             return id == VIDEO_PRODUCT_ID ? Optional.of(VIDEO_PRODUCT) : Optional.empty();
@@ -64,10 +70,6 @@ public class ProductServiceTest {
 
     @Test
     public void shouldSaveProduct() {
-        //given
-        ProductRepository productRepository = mock(ProductRepository.class);
-        ProductService productService = new ProductService(productRepository);
-
         //when
         productService.add(VIDEO_PRODUCT);
 
@@ -79,8 +81,6 @@ public class ProductServiceTest {
     @Test
     public void shouldSaveProductWithCaptor() {
         //given
-        ProductRepository productRepository = mock(ProductRepository.class);
-        ProductService productService = new ProductService(productRepository);
         ArgumentCaptor<Product> captor = ArgumentCaptor.forClass(Product.class);
 
         //when
