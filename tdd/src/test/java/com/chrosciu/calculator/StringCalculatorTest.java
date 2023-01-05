@@ -25,4 +25,12 @@ public class StringCalculatorTest {
     public final void whenEmptyStringIsUsedThenReturnValueIs0() {
         assertThat(StringCalculator.add("")).isEqualTo(0);
     }
+    @Test
+    public final void whenOneNumberIsUsedThenReturnValueIsThatSameNumber() {
+        assertThat(StringCalculator.add("3")).isEqualTo(3);
+    }
+    @Test
+    public final void whenTwoNumbersAreUsedThenReturnValueIsTheirSum() {
+        assertThat(StringCalculator.add("3,6")).isEqualTo(9);
+    }
 }
