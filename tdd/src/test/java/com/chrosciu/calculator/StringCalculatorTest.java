@@ -2,6 +2,7 @@ package com.chrosciu.calculator;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatRuntimeException;
 
@@ -19,5 +20,9 @@ public class StringCalculatorTest {
     @Test
     public final void whenNonNumberIsUsedThenExceptionIsThrown() {
         assertThatRuntimeException().isThrownBy(() -> StringCalculator.add("1,X"));
+    }
+    @Test
+    public final void whenEmptyStringIsUsedThenReturnValueIs0() {
+        assertThat(StringCalculator.add("")).isEqualTo(0);
     }
 }

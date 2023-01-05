@@ -7,7 +7,9 @@ public class StringCalculator {
             throw new RuntimeException("Up to 2 numbers separated by comma (,) are allowed");
         } else {
             for (String number : numbersArray) {
-                Integer.parseInt(number);
+                if (!number.isEmpty()) {
+                    Integer.parseInt(number);
+                }
             }
         }
         return 0;
