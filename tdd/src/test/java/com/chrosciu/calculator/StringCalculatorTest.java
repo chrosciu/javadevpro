@@ -49,4 +49,8 @@ public class StringCalculatorTest {
     public final void whenOneOrMoreNumbersAreGreaterThan1000IsUsedThenItIsNotIncludedInSum() {
         assertThat(StringCalculator.add("3,1000,1001,6,1234")).isEqualTo(1009);
     }
+    @Test
+    public final void whenMultipleDelimitersAreSpecifiedThenTheyAreUsedToSeparateNumbers() {
+        assertThat(StringCalculator.add("//;-\n1;2-3")).isEqualTo(6);
+    }
 }

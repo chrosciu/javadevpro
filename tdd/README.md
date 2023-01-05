@@ -12,6 +12,5 @@ For example `//;\n1;2` should return `3` where the default delimiter is `;`
 8. Calling `add` with a negative number will throw an exception with message `negatives not allowed` – and the negative that was passed. 
 If there are multiple negatives, show all of them in the exception message
 9. Numbers bigger than `1000` should be ignored, so adding `2 + 1001 = 2`
-10. Delimiters can be of any length with the following format: `//[delimiter]\n` for example: `//[—]\n1—2—3` should return `6`
-11. Allow multiple delimiters like this: `//[delim1][delim2]\n` for example `//[-][%]\n1-2%3` should return `6`
-12. Make sure you can also handle multiple delimiters with length longer than one char
+10. Allow multiple delimiters like this: `//[delim1][delim2]\n` for example `//-%\n1-2%3` should return `6`
+
