@@ -39,4 +39,10 @@ public class StringCalculatorTest {
     public final void whenDelimiterIsSpecifiedThenItIsUsedToSeparateNumbers() {
         assertThat(StringCalculator.add("//;\n3;6;15")).isEqualTo(24);
     }
+    @Test
+    public final void whenNegativeNumbersAreUsedThenRuntimeExceptionIsThrown() {
+        assertThatRuntimeException()
+                .isThrownBy(() -> StringCalculator.add("3,-6,15,-18,46,33"))
+                .withMessage("Negatives not allowed: [-6, -18]");
+    }
 }
