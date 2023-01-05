@@ -31,4 +31,8 @@ public class StringCalculatorTest {
     public final void whenAnyNumberOfNumbersIsUsedThenReturnValuesAreTheirSums() {
         assertThat(StringCalculator.add("3,6,15,18")).isEqualTo(42);
     }
+    @Test
+    public final void whenNewLineIsUsedBetweenNumbersThenReturnValuesAreTheirSums() {
+        assertThat(StringCalculator.add("3,6\n15")).isEqualTo(24);
+    }
 }
