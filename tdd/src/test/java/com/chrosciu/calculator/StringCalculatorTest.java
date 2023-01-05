@@ -45,4 +45,8 @@ public class StringCalculatorTest {
                 .isThrownBy(() -> StringCalculator.add("3,-6,15,-18,46,33"))
                 .withMessage("Negatives not allowed: [-6, -18]");
     }
+    @Test
+    public final void whenOneOrMoreNumbersAreGreaterThan1000IsUsedThenItIsNotIncludedInSum() {
+        assertThat(StringCalculator.add("3,1000,1001,6,1234")).isEqualTo(1009);
+    }
 }
