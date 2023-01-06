@@ -18,7 +18,7 @@ public class ShopRunner {
 
     private static final Product BOOK_PRODUCT = Product.builder()
             .name("Spring guide")
-            .description("Praktyczne ćwiczenia do samodzielnego wykonania")
+            .description("Praktyczne cwiczenia do samodzielnego wykonania")
             .type(ProductType.BOOK)
             .price(FastMoney.of(200, "PLN"))
             .build();

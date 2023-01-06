@@ -1,5 +1,6 @@
 package com.chrosciu.shop;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,11 @@ public class ShopServiceIntegrationTest {
     @BeforeEach
     public void setUp() {
         shopApplication = new ShopApplication();
+    }
+
+    @AfterEach
+    public void tearDown() {
+        shopApplication.close();
     }
 
     @Test

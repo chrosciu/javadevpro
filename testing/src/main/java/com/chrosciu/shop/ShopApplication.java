@@ -11,9 +11,11 @@ import com.chrosciu.shop.products.ProductRepository;
 import com.chrosciu.shop.products.ProductService;
 import lombok.Getter;
 
-public class ShopApplication {
+public class ShopApplication implements AutoCloseable {
     @Getter
-    private ShopService shopService;
+    private final ShopService shopService;
+
+    private final ShopWebServer shopWebServer;
 
     public ShopApplication() {
         ProductRepository productRepository = new MapProductRepository();
@@ -25,5 +27,13 @@ public class ShopApplication {
         shopService = new ShopService(paymentService, productService);
         ShopRunner shopRunner = new ShopRunner(shopService);
         shopRunner.run();
+        shopWebServer = new ShopWebServer(shopService);
     }
+
+    @Override
+    public void close() {
+        shopWebServer.close();
+    }
+
+
 }
