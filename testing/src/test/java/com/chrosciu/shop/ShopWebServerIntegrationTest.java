@@ -1,8 +1,7 @@
 package com.chrosciu.shop;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -11,19 +10,8 @@ import java.net.http.HttpResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@ExtendWith(ShopApplicationExtension.class)
 public class ShopWebServerIntegrationTest {
-    private ShopApplication shopApplication;
-
-    @BeforeEach
-    public void setUp() {
-        shopApplication = new ShopApplication();
-    }
-
-    @AfterEach
-    public void tearDown() {
-        shopApplication.close();
-    }
-
     @Test
     public void shopServiceShouldBeCreated() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
