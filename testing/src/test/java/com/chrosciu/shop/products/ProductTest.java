@@ -1,7 +1,9 @@
 package com.chrosciu.shop.products;
 
 import com.chrosciu.shop.products.Product.ProductBuilder;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -51,5 +53,15 @@ public class ProductTest {
                 Arguments.of("", ""),
                 Arguments.of(null, null)
         );
+    }
+
+    @DisplayName("Should throw exception if null productType is set")
+    @Test
+    public void shouldThrowExceptionIfNullProductTypeIsSet() {
+        //given
+        ProductBuilder productBuilder = Product.builder().name("Book");
+
+        //when
+        Assertions.assertThatNullPointerException().isThrownBy(() -> productBuilder.build());
     }
 }
