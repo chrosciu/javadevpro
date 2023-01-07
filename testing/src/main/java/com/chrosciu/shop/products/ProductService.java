@@ -7,8 +7,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
+    private final ProductValidator productValidator;
 
     public Product add(Product product) {
+        productValidator.validate(product);
         return productRepository.save(product);
     }
 
