@@ -4,8 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.javamoney.moneta.FastMoney;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
-import java.util.Map;
+import java.util.Optional;
 
 public class ProductServiceTest {
     private static final Product VIDEO_PRODUCT = Product.builder()
@@ -23,21 +24,21 @@ public class ProductServiceTest {
             .build();
 
     private static final long VIDEO_PRODUCT_ID = 137L;
+    private static final long BOOK_PRODUCT_ID = 262L;
 
-    private MapProductRepository productRepository;
+    private ProductRepository productRepository;
     private ProductService productService;
 
     @BeforeEach
     public void setUp() {
-        productRepository = new MapProductRepository();
+        productRepository = Mockito.mock(ProductRepository.class);
         productService = new ProductService(productRepository);
     }
 
     @Test
     public void shouldReturnProductWithGivenId() {
         //given
-        Map<Long, Product> productMap = Map.of(VIDEO_PRODUCT_ID, VIDEO_PRODUCT);
-        productRepository.setProductMap(productMap);
+        Mockito.when(productRepository.findById(VIDEO_PRODUCT_ID)).thenReturn(Optional.of(VIDEO_PRODUCT));
 
         //when
         Product product = productService.getBy(VIDEO_PRODUCT_ID);
@@ -51,13 +52,14 @@ public class ProductServiceTest {
         //TODO
     }
 
+
     @Test
-    public void shouldSaveProduct() {
+    public void shouldReturnAllProducts() {
         //TODO
     }
 
     @Test
-    public void shouldReturnAllProducts() {
+    public void shouldSaveProduct() {
         //TODO
     }
 }
