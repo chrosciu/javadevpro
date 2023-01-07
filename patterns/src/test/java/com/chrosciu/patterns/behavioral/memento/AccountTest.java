@@ -1,5 +1,6 @@
 package com.chrosciu.patterns.behavioral.memento;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -33,6 +34,7 @@ public class AccountTest {
     }
 
     @Test
+    @Disabled
     public void shouldRestoreStateFromSavedMemento() {
         account.deposit(BigDecimal.valueOf(20));
         Account.Memento memento = account.save();

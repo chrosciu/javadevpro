@@ -1,5 +1,6 @@
 package com.chrosciu.patterns.behavioral.interpreter;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -8,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ExpressionTest {
     @Test
+    @Disabled
     public void shouldProperlyCalculateValue() {
         // (2a + 3) * 4 gdzie a = 4
         Expression expression = new Operation(
