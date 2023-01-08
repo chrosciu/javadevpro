@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
 public class ShopWebServer implements AutoCloseable {
+    private final ShopService shopService;
     private HttpServer httpServer;
 
     @SneakyThrows
@@ -17,6 +18,7 @@ public class ShopWebServer implements AutoCloseable {
         System.out.println("Starting server");
         httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
         httpServer.createContext("/hello", new HelloHandler());
+        httpServer.createContext("/products", new ProductsHandler());
         httpServer.start();
         System.out.println("Server started");
     }

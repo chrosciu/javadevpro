@@ -24,12 +24,17 @@ public class ShopWebServerIntegrationTest {
     }
 
     @Test
-    public void shouldResponseWithHelloWorld() throws Exception {
+    public void shouldRespondWithHelloWorld() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8000/hello"))
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         Assertions.assertThat(response.body()).isEqualTo("Hello World!");
+    }
+
+    @Test
+    public void shouldRespondWithAllProducts() {
+        //TODO
     }
 }
