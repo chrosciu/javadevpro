@@ -16,6 +16,7 @@ import lombok.Getter;
 public class ShopApplication implements AutoCloseable {
     @Getter
     private final ShopService shopService;
+    private final ShopWebServer shopWebServer;
 
     public ShopApplication() {
         System.out.println("Starting application");
@@ -29,12 +30,14 @@ public class ShopApplication implements AutoCloseable {
         shopService = new ShopService(productService, paymentService);
         ShopRunner shopRunner = new ShopRunner(shopService);
         shopRunner.run();
+        shopWebServer = new ShopWebServer();
         System.out.println("Application started");
     }
 
     @Override
     public void close() {
         System.out.println("Closing application");
+        shopWebServer.close();
         System.out.println("Application closed");
     }
 }
