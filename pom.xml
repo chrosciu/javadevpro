@@ -17,6 +17,7 @@
         <module>profiler</module>
         <module>testing</module>
         <module>tdd</module>
+        <module>benchmarking</module>
     </modules>
 
     <properties>
