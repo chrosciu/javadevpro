@@ -30,7 +30,6 @@ public class Product {
         }
     }
 
-    //Ksiazka o   Springu -> Ksiazka_o_Springu
     private static String sanitizeName(String name) {
         return Optional.ofNullable(name)
                 .map(n -> n.trim().replaceAll("\\s+", "_"))
