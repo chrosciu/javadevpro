@@ -30,7 +30,7 @@ public class ShopApplication implements AutoCloseable {
         shopService = new ShopService(productService, paymentService);
         ShopRunner shopRunner = new ShopRunner(shopService);
         shopRunner.run();
-        shopWebServer = new ShopWebServer();
+        shopWebServer = new ShopWebServer(shopService);
         System.out.println("Application started");
     }
 

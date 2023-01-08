@@ -14,7 +14,8 @@ public class ShopWebServer implements AutoCloseable {
     private HttpServer httpServer;
 
     @SneakyThrows
-    public ShopWebServer() {
+    public ShopWebServer(ShopService shopService) {
+        this.shopService = shopService;
         System.out.println("Starting server");
         httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
         httpServer.createContext("/hello", new HelloHandler());
@@ -37,6 +38,17 @@ public class ShopWebServer implements AutoCloseable {
             exchange.sendResponseHeaders(200, responseBody.length());
             OutputStream outputStream = exchange.getResponseBody();
             outputStream.write(responseBody.getBytes());
+            outputStream.close();
+        }
+    }
+
+    private class ProductsHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange exchange) throws IOException {
+            String response = shopService.getProducts().toString();
+            exchange.sendResponseHeaders(200, response.length());
+            OutputStream outputStream = exchange.getResponseBody();
+            outputStream.write(response.getBytes());
             outputStream.close();
         }
     }
