@@ -2,3 +2,4 @@
 2. The `add` method can take 0, 1 or 2 numbers (separated with commas). For example: `` or `1` or `1,2`
 3. For an empty string method should return 0
 4. Method should return sum of passed numbers
+5. Allow  method to handle an unknown amount of numbers
