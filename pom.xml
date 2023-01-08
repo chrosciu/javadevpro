@@ -16,6 +16,7 @@
         <module>debugger</module>
         <module>profiler</module>
         <module>testing</module>
+        <module>tdd</module>
     </modules>
 
     <properties>
