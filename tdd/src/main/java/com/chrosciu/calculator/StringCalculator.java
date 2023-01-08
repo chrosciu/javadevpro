@@ -3,7 +3,6 @@ package com.chrosciu.calculator;
 public class StringCalculator {
     public static int add(String numbers) {
         String[] numbersArray = numbers.split(",");
-        validateNumbersCount(numbersArray);
         return getSum(numbersArray);
     }
 
@@ -15,11 +14,5 @@ public class StringCalculator {
             }
         }
         return sum;
-    }
-
-    private static void validateNumbersCount(String[] numbersArray) {
-        if (numbersArray.length > 2) {
-            throw new RuntimeException("Too many numbers (max 2 allowed");
-        }
     }
 }
