@@ -2,7 +2,7 @@ package com.chrosciu.calculator;
 
 public class StringCalculator {
     public static int add(String numbers) {
-        String[] numbersArray = numbers.split(",");
+        String[] numbersArray = numbers.split("[,\n]");
         return getSum(numbersArray);
     }
 
