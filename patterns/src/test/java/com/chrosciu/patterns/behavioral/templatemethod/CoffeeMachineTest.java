@@ -11,7 +11,7 @@ import static org.mockito.Mockito.spy;
 
 public class CoffeeMachineTest {
     //given
-    private CoffeeMachine coffeeMachine = spy(new CoffeeMachine());
+    private final CoffeeMachine coffeeMachine = spy(new CoffeeMachine());
 
     @Test
     void shouldMakeTea() {
