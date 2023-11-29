@@ -16,7 +16,7 @@
 * Stosujemy gdy:
   * obiekt nie udostępnia na zewnątrz pól, które są niezbędne by go zbudować od nowa
   * mamy do czynienia z interfejsem i nie wiemy jaka konkretna klasa się pod nim kryje
-* Wzorcowa implementacja zakłada zdefiniowanie metody clone, ale akurat w Javie ta metoda i intrfejs Cloneable jest bardzo średnio zaprojektowany[](https://): [https://devcave.pl/effective-java/metoda-clone](https://devcave.pl/effective-java/metoda-clone)
+* Wzorcowa implementacja zakłada zdefiniowanie metody clone, ale akurat w Javie ta metoda i interfejs Cloneable jest bardzo średnio zaprojektowany[](https://): [https://devcave.pl/effective-java/metoda-clone](https://devcave.pl/effective-java/metoda-clone)
 * Dlatego zrobimy to inaczej:
   * Jeśli mamy konkretną klasę to najlepszym wyjściem jest konstruktor kopiujący
   * W przypadku interfejsu definiujemy metodę copy (która pod spodem woła ww. konstruktor)
