@@ -2,11 +2,9 @@ package com.chrosciu.patterns.behavioral.templatemethod;
 
 import lombok.NonNull;
 
-import static com.chrosciu.patterns.behavioral.templatemethod.CoffeeMachine.Granulate.TEA;
-
 public class CoffeeMachine {
 
-    protected enum Granulate {
+    enum Granulate {
         TEA,
         COFFEE
     }
@@ -28,23 +26,18 @@ public class CoffeeMachine {
     }
 
     public void makeTea() {
-        boilWater();
-        addGranulate(TEA);
-        addSugar(2);
-        pourDrink(250);
+        new Tea(this).prepare();
     }
 
     public void makeBitterTea() {
-        boilWater();
-        addGranulate(TEA);
-        pourDrink(250);
+        new BitterTea(this).prepare();
     }
 
     public void makeSmallCoffee() {
-        //TODO: Implement
+        new SmallCoffee(this).prepare();
     }
 
     public void makeCoffee() {
-        //TODO: Implement
+        new Coffee(this).prepare();
     }
 }
