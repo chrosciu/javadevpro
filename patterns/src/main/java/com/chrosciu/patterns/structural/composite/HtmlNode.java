@@ -23,4 +23,19 @@ public class HtmlNode implements Node {
     public List<Node> getSubNodes() {
         return Collections.unmodifiableList(subNodes);
     }
+
+    @Override
+    public String renderContentAsString() {
+        var stringBuilder = new StringBuilder();
+        stringBuilder.append("<");
+        stringBuilder.append(tagName);
+        stringBuilder.append(">");
+        for (Node subNode: subNodes) {
+            stringBuilder.append(subNode.renderContentAsString());
+        }
+        stringBuilder.append("</");
+        stringBuilder.append(tagName);
+        stringBuilder.append(">");
+        return stringBuilder.toString();
+    }
 }

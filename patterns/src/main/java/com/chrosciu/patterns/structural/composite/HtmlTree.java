@@ -7,7 +7,6 @@ public class HtmlTree {
     private final HtmlNode root;
 
     public String renderContentAsString() {
-        //TODO: Implement
-        throw new RuntimeException("Not implemented yet");
+        return root.renderContentAsString();
     }
 }
