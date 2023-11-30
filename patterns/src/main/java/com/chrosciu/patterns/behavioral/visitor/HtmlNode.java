@@ -23,4 +23,9 @@ class HtmlNode implements Node {
     public List<Node> getSubNodes() {
         return Collections.unmodifiableList(subNodes);
     }
+
+    @Override
+    public void accept(NodeVisitor nodeVisitor) {
+        nodeVisitor.visit(this);
+    }
 }

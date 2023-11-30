@@ -7,7 +7,8 @@ class HtmlTree {
     private final HtmlNode root;
 
     public String renderContentAsString() {
-        //TODO: Implement
-        throw new RuntimeException("Not implemented yet");
+        var nodeVisitor = new StringContentGeneratorNodeVisitor();
+        root.accept(nodeVisitor);
+        return nodeVisitor.getContent();
     }
 }
