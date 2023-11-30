@@ -11,6 +11,40 @@
 
     <artifactId>testing</artifactId>
 
+    <profiles>
+        <profile>
+            <id>spock-tests</id>
+            <activation>
+                <!-- Currently Spock does not work with JDK > 17 -->
+                <jdk>(,18)</jdk>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.spockframework</groupId>
+                    <artifactId>spock-core</artifactId>
+                    <version>2.3-groovy-4.0</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.gmavenplus</groupId>
+                        <artifactId>gmavenplus-plugin</artifactId>
+                        <version>2.0.0</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>compileTests</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>org.javamoney</groupId>
@@ -19,30 +53,6 @@
             <type>pom</type>
         </dependency>
 
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
-            <version>2.3-groovy-4.0</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.gmavenplus</groupId>
-                <artifactId>gmavenplus-plugin</artifactId>
-                <version>2.0.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compileTests</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
 
 </project>
