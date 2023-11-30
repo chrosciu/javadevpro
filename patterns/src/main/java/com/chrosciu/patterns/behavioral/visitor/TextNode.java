@@ -1,4 +1,4 @@
-package com.chrosciu.patterns.structural.composite;
+package com.chrosciu.patterns.behavioral.visitor;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -7,9 +7,4 @@ import lombok.RequiredArgsConstructor;
 @Getter
 class TextNode implements Node {
     private final String text;
-
-    @Override
-    public String renderContentAsString() {
-        return text;
-    }
 }

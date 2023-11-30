@@ -1,4 +1,4 @@
-package com.chrosciu.patterns.structural.composite;
+package com.chrosciu.patterns.behavioral.visitor;
 
 import lombok.RequiredArgsConstructor;
 
@@ -7,6 +7,7 @@ class HtmlTree {
     private final HtmlNode root;
 
     public String renderContentAsString() {
-        return root.renderContentAsString();
+        //TODO: Implement
+        throw new RuntimeException("Not implemented yet");
     }
 }

@@ -1,5 +1,5 @@
 package com.chrosciu.patterns.structural.composite;
 
-public interface Node {
+interface Node {
     String renderContentAsString();
 }

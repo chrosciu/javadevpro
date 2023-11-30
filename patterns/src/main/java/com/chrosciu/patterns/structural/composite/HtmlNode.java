@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class HtmlNode implements Node {
+class HtmlNode implements Node {
     @Getter
     private final String tagName;
     private List<Node> subNodes = new ArrayList<>();
