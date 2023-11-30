@@ -7,7 +7,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 @RequiredArgsConstructor(access = PROTECTED)
 public abstract class AbstractVehicle {
-    private final Log log;
+    private final Log log = Log.getInstance();
 
     public void startEngine() {
         log.addMessage("Engine started");

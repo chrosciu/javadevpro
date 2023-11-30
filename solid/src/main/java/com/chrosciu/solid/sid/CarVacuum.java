@@ -1,11 +1,9 @@
 package com.chrosciu.solid.sid;
 
 import com.chrosciu.solid.utils.Log;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 public class CarVacuum implements CarVacuuming {
-    private final Log log;
+    private final Log log = Log.getInstance();
 
     @Override
     public void vacuum() {
