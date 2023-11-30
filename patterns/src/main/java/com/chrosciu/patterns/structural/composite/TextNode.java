@@ -5,6 +5,6 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public class TextNode implements Node {
+class TextNode implements Node {
     private final String text;
 }

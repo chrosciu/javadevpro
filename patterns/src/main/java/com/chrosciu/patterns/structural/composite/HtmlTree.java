@@ -3,7 +3,7 @@ package com.chrosciu.patterns.structural.composite;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class HtmlTree {
+class HtmlTree {
     private final HtmlNode root;
 
     public String renderContentAsString() {
