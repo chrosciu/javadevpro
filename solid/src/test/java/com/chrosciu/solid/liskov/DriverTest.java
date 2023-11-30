@@ -1,18 +1,23 @@
 package com.chrosciu.solid.liskov;
 
-import com.chrosciu.solid.utils.InMemoryLog;
 import com.chrosciu.solid.utils.Log;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DriverTest {
-    private final Log log = new InMemoryLog();
+    private final Log log = Log.getInstance();
     private final Driver driver = new Driver();
+
+    @AfterEach
+    void cleanUp() {
+        log.clearMessages();
+    }
 
     @Test
     public void shouldDriveVehicle() {
-        Vehicle vehicle = new Vehicle(log);
+        Vehicle vehicle = new Vehicle();
 
         driver.drive(vehicle);
 
@@ -21,7 +26,7 @@ public class DriverTest {
 
     @Test
     public void shouldDriveTeslaVehicle() {
-        Vehicle vehicle = new TeslaVehicle(log);
+        Vehicle vehicle = new TeslaVehicle();
 
         driver.drive(vehicle);
 

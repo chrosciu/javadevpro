@@ -1,15 +1,20 @@
 package com.chrosciu.solid.sid;
 
-import com.chrosciu.solid.utils.InMemoryLog;
 import com.chrosciu.solid.utils.Log;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarCheckupTest {
-    private final Log log = new InMemoryLog();
-    private final CarCheckup carCheckup = new CarCheckup(log);
+    private final Log log = Log.getInstance();
+    private final CarCheckup carCheckup = new CarCheckup();
     private final CarCheckup waxCarCheckup = null;
+
+    @AfterEach
+    void cleanUp() {
+        log.clearMessages();
+    }
 
     @Test
     public void shouldPerformAllNeededActionsDuringCheckup() {

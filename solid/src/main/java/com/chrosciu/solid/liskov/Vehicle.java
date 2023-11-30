@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class Vehicle {
-    private final Log log;
+    private final Log log = Log.getInstance();
 
     public void startEngine() {
         log.addMessage("Engine started");
