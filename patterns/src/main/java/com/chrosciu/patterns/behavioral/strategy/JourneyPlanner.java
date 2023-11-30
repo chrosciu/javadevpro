@@ -18,6 +18,7 @@ public class JourneyPlanner {
                 return start.distanceTo(interchange) + interchange.distanceTo(end);
             }
         } else if (DRONE == vehicleType) {
+            //TODO: Implement
             throw new RuntimeException("Drone distance not implemented yet");
         } else {
             throw new IllegalStateException("Unknown vehicle type");
