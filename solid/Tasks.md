@@ -9,17 +9,19 @@ Klasy do zadań znajdują się w pakiecie `sid`
 * Dokonać ekstrakcji interfejsu `CarServicing` i uczynić go zależnością klasy `CarCheckup`
 * Zastanowić się, czy interfejs `CarServicing` jest spójny i czy nie należałoby go "rozseparować" na mniejsze kawałki ? Jeśli tak - dokonać podziału.
 * Czy na tym etapie da się już dać "wpiąć" woskowanie z klasy `WaxCarWash` ? Jeśli tak - doprowadzić do działania drugi test.
-* Zastanowić się czy klasa `CarService` nie ma za dużo odpowiedzialności ? Jeśli tak - dokonać jej podziału.
+* Zastanowić się, czy klasa `CarService` nie ma za dużo odpowiedzialności ? Jeśli tak - dokonać jej podziału.
 
 ### Open-Closed Principle
 
 Klasy do zadań znajdują się w pakiecie `ocp`
 
-* W klasie `CarSearch` znajdują się 4 niezaimplementowane metody `findByXXX` służące do wyszukiwania samochodów pod kątem różnych kryteriów.
-* Zaimplementować dwie pierwsze metody (`findByMaxPrice` i `findByColors`).
-* Zastanowić się co będzie działo się klasą `CarSearch` w momencie gdy pojawią się wymagania biznesowe co do kolejnych sposobów wyszukiwania ? Czy na pewno konieczne jest każdorazowe zmienianie tej klasy ? Czy też można zrobić to tak, aby jej więcej "nie dotykać" ?
-* Po znalezieniu odpowiedzi zaimplementować pozostałe dwie metody (`findByMaxPriceAndMaxFuelUsage` i `findByMaxPriceOrMaxFuelUsage`).
+* W klasie `CarSearch` znajdują się metoda `findByName` służąca do wyszukiwania samochodów o zadanej nazwie
+* W związku z nowym biznesowym (pojawia się potrzeba dodania możliwości wyszukiwania samochodów do zadanego pułapu cenowego) dodać w klasie `CarSearch` metodę `findByMaxPrice`. 
+* Zastanowić się co będzie działo się klasą `CarSearch` w momencie, gdy pojawią się wymagania biznesowe co do kolejnych sposobów wyszukiwania ? Czy na pewno konieczne jest każdorazowe zmienianie tej klasy ? Czy też można zrobić to tak, aby jej więcej "nie dotykać" ?
+* Po znalezieniu odpowiedzi zmodyfikować tak klasę `CarSearch` aby można było rozszerzać ją o kolejne sposoby wyszukiwania samochodów **bez** jej zmiany 
+* Następnie już bez modyfikacji klasy `CarSearch` - zaimplementować możliwość wyszukiwania samochodów o zadanych kolorach.
 * Sprawdzić poprawność działania rozwiązań za pomocą testów w klasie `CarSearchTest`.
+* DLA CHĘTNYCH: jak zaimplementować wyszukiwanie z użyciem łączenia warunków poprzez operacje AND / OR ?
 
 ### Liskov Substitution Principle
 
