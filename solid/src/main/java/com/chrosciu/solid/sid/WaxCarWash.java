@@ -2,9 +2,9 @@ package com.chrosciu.solid.sid;
 
 import com.chrosciu.solid.utils.Log;
 
-public class WaxCarWash {
+public class WaxCarWash implements CarWashing {
     private final Log log = Log.getInstance();
-    
+
     public void wash() {
         washBody();
         washWindows();
