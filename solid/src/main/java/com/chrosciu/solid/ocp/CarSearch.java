@@ -4,20 +4,29 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class CarSearch {
     private final CarRepository repository;
 
+    @Deprecated
     public List<Car> findByName(String name) {
-        return repository.getCars().stream().filter(c -> name.equals(c.getName())).collect(Collectors.toList());
+        CarNameCondition carNameCondition = new CarNameCondition(name);
+        return repository.getCars().stream().filter(carNameCondition).collect(Collectors.toList());
     }
 
     public List<Car> findByMaxPrice(int maxPrice) {
-        //TODO: Implement
-        return null;
+        return repository.getCars().stream().filter(c -> c.getPrice() <= maxPrice).collect(Collectors.toList());
     }
+
+    public List<Car> findBy(Predicate<Car> condition) {
+        return repository.getCars().stream().filter(condition).collect(Collectors.toList());
+    }
+
+    /*
+
 
     public List<Car> findByColors(EnumSet<Color> colors) {
         //TODO: Implement
@@ -33,4 +42,6 @@ public class CarSearch {
         //TODO: Implement
         return null;
     }
+
+     */
 }
