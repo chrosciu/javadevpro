@@ -2,7 +2,7 @@ package com.chrosciu.solid.sid;
 
 import com.chrosciu.solid.utils.Log;
 
-public class CarService {
+public class CarService implements CarServicing {
     private final Log log = Log.getInstance();
 
     public void checkLiquids() {
