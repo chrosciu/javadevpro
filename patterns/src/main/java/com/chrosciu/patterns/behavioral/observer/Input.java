@@ -2,18 +2,21 @@ package com.chrosciu.patterns.behavioral.observer;
 
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.Setter;
 
-class Input {
-    @Setter
-    private Checkbox checkbox;
-    @Setter
-    private Button button;
+class Input extends AbstractPublisher implements Subscriber {
     @Getter
     private String text = "";
 
     public void setText(@NonNull String text) {
         this.text = text;
-        button.setEnabled(!checkbox.isChecked() || !text.isBlank());
+        notifyAllSubscribers(new InputChangeEvent(text));
+        //button.setEnabled(!checkbox.isChecked() || !text.isBlank());
+    }
+
+    @Override
+    public void notify(Object event) {
+        if (event instanceof ButtonSubmitEvent) {
+            this.text = "";
+        }
     }
 }
