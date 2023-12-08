@@ -3,7 +3,7 @@ package com.chrosciu.patterns.behavioral.mediator;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Button {
+class Button {
     @Setter
     private Checkbox checkbox;
     @Setter
