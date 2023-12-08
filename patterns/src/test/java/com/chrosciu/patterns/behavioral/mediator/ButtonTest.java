@@ -9,15 +9,13 @@ public class ButtonTest {
     private final Button button = new Button();
     private final Checkbox checkbox = new Checkbox();
     private final Input input = new Input();
+    private final FormMediator formMediator = new FormMediator(checkbox, input, button);
 
     @BeforeEach
     void setUp() {
-        button.setCheckbox(checkbox);
-        button.setInput(input);
-        checkbox.setInput(input);
-        checkbox.setButton(button);
-        input.setCheckbox(checkbox);
-        input.setButton(button);
+        button.setMediator(formMediator);
+        checkbox.setMediator(formMediator);
+        input.setMediator(formMediator);
     }
 
     @Test

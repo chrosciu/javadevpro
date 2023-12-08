@@ -5,9 +5,7 @@ import lombok.Setter;
 
 public class Button {
     @Setter
-    private Checkbox checkbox;
-    @Setter
-    private Input input;
+    private Mediator mediator;
     @Getter
     private boolean enabled = true;
 
@@ -16,10 +14,6 @@ public class Button {
     }
 
     public void submit() {
-        if (!enabled) {
-            return;
-        }
-        checkbox.setChecked(false);
-        input.setText("");
+        mediator.notify(new ButtonSubmitEvent(this));
     }
 }

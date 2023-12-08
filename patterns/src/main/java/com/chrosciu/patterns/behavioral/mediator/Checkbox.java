@@ -5,14 +5,12 @@ import lombok.Setter;
 
 public class Checkbox {
     @Setter
-    private Input input;
-    @Setter
-    private Button button;
+    private Mediator mediator;
     @Getter
     private boolean checked = false;
 
     public void setChecked(boolean checked) {
         this.checked = checked;
-        button.setEnabled(!checked || !input.getText().isBlank());
+        mediator.notify(new CheckboxChangeEvent(this));
     }
 }

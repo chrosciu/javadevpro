@@ -6,14 +6,12 @@ import lombok.Setter;
 
 class Input {
     @Setter
-    private Checkbox checkbox;
-    @Setter
-    private Button button;
+    private Mediator mediator;
     @Getter
     private String text = "";
 
     public void setText(@NonNull String text) {
         this.text = text;
-        button.setEnabled(!checkbox.isChecked() || !text.isBlank());
+        mediator.notify(new InputChangeEvent(this));
     }
 }
