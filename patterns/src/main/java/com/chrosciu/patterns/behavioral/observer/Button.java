@@ -1,11 +1,13 @@
-package com.chrosciu.patterns.behavioral.mediator;
+package com.chrosciu.patterns.behavioral.observer;
 
 import lombok.Getter;
 import lombok.Setter;
 
 class Button {
     @Setter
-    private Mediator mediator;
+    private Checkbox checkbox;
+    @Setter
+    private Input input;
     @Getter
     private boolean enabled = true;
 
@@ -14,6 +16,10 @@ class Button {
     }
 
     public void submit() {
-        mediator.notify(new ButtonSubmitEvent(this));
+        if (!enabled) {
+            return;
+        }
+        checkbox.setChecked(false);
+        input.setText("");
     }
 }
