@@ -1,13 +1,13 @@
 package com.chrosciu.patterns.behavioral.chain;
 
-class JuniorDeveloper extends Developer {
+class RegularDeveloper extends Developer {
     @Override
     boolean canSolve(Bug bug) {
-        return bug.getSeverity().getRank() <= Severity.MINOR.getRank();
+        return bug.getSeverity().getRank() <= Severity.MAJOR.getRank();
     }
 
     @Override
     String prepareResolution(Bug bug) {
-        return "Solved by junior developer";
+        return "Solved by regular developer";
     }
 }
