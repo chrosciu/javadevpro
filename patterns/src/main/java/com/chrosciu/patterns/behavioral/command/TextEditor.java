@@ -1,22 +1,33 @@
 package com.chrosciu.patterns.behavioral.command;
 
+import java.util.Stack;
+
 class TextEditor {
     private final TextBuffer textBuffer = new TextBuffer();
+    private final Stack<Command> commandHistory = new Stack<>();
 
     void appendText(String text) {
-        textBuffer.setText(textBuffer.getText() + text);
+        execute(new AppendCommand(textBuffer, text));
     }
 
     void clearText() {
-        textBuffer.setText("");
+        execute(new ClearCommand(textBuffer));
     }
 
     void capitalizeText() {
-        textBuffer.setText(textBuffer.getText().toUpperCase());
+        execute(new CapitalizeCommand(textBuffer));
+    }
+
+    private void execute(Command command) {
+        command.execute();
+        commandHistory.push(command);
     }
 
     void undo() {
-        //TODO: Implement
+        var lastCommand = commandHistory.pop();
+        if (lastCommand != null) {
+            lastCommand.undo();
+        }
     }
 
     String getText() {
