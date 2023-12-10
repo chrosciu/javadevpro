@@ -1,11 +1,6 @@
 package com.chrosciu.patterns.structural.bridge;
 
-class RegularAirTicket extends Ticket {
-    @Override
-    String getTransportationType() {
-        return "air";
-    }
-
+class RegularPrice extends Price {
     @Override
     String getPriceType() {
         return "regular";

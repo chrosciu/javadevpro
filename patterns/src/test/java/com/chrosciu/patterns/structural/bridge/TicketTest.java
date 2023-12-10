@@ -9,7 +9,7 @@ class TicketTest {
     @Test
     void regularAirTicket() {
         //given
-        var ticket = new RegularAirTicket();
+        var ticket = new AirTicket(new RegularPrice());
 
         //when / then
         assertThat(ticket)
@@ -20,7 +20,7 @@ class TicketTest {
     @Test
     void discountRailwayTicket() {
         //given
-        var ticket = new DiscountRailwayTicket();
+        var ticket = new RailwayTicket(new DiscountPrice());
 
         //when / then
         assertThat(ticket)
@@ -31,7 +31,7 @@ class TicketTest {
     @Test
     void flexFerryTicket() {
         //given
-        var ticket = (Ticket)null;
+        var ticket = new FerryTicket(new FlexPrice());
 
         //when / then
         assertThat(ticket)
