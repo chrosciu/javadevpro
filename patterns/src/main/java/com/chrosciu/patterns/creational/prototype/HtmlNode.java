@@ -33,7 +33,8 @@ class HtmlNode implements Node {
 
     @Override
     public Node copy() {
-        //TODO: Implement
-        return null;
+        var node = new HtmlNode(tagName);
+        node.addSubNodes(subNodes.toArray(new Node[0]));
+        return node;
     }
 }

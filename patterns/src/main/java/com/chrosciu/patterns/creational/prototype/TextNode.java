@@ -13,7 +13,6 @@ class TextNode implements Node {
 
     @Override
     public Node copy() {
-        //TODO: Implement
-        return null;
+        return new TextNode(text);
     }
 }
