@@ -1,6 +1,9 @@
 package com.chrosciu.solid.liskov;
 
-public class TeslaVehicle extends Vehicle {
+import com.chrosciu.solid.utils.Log;
+
+public class TeslaVehicle extends AbstractVehicle {
+    private final Log log = Log.getInstance();
 
     private boolean charged = false;
 
@@ -13,6 +16,6 @@ public class TeslaVehicle extends Vehicle {
         if (!charged) {
             throw new IllegalStateException("Cannot ride on discharged batteries!");
         }
-        super.ride();
+        log.addMessage("Let's ride!");
     }
 }
