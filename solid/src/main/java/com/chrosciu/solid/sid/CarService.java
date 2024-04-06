@@ -2,9 +2,10 @@ package com.chrosciu.solid.sid;
 
 import com.chrosciu.solid.utils.Log;
 
-public class CarService {
+public class CarService implements CarServicing {
     private final Log log = Log.getInstance();
 
+    @Override
     public void checkLiquids() {
         checkOil();
         checkWindscreenWasher();
@@ -23,6 +24,7 @@ public class CarService {
         log.addMessage("Checking brake fluid");
     }
 
+    @Override
     public void vacuum() {
         vacuumDashboard();
         vacuumSeats();
@@ -36,6 +38,7 @@ public class CarService {
         log.addMessage("Vacuuming seats");
     }
 
+    @Override
     public void wash() {
         washBody();
         washWindows();
