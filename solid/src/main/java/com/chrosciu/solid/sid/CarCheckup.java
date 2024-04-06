@@ -1,15 +1,15 @@
 package com.chrosciu.solid.sid;
 
 public class CarCheckup {
-    private final CarService carService;
+    private final CarServicing carServicing;
 
-    public CarCheckup() {
-        this.carService = new CarService();
+    public CarCheckup(CarServicing carServicing) {
+        this.carServicing = carServicing;
     }
 
     public void performCheckup() {
-        carService.checkLiquids();
-        carService.vacuum();
-        carService.wash();
+        carServicing.checkLiquids();
+        carServicing.vacuum();
+        carServicing.wash();
     }
 }
