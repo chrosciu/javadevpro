@@ -2,13 +2,21 @@
 
 Klasy do zadań znajdują się w pakiecie `sid`
 
+### Dependency Inversion Principle
+
 * Zapoznać się klasą `CarCheckup` i testami w klasie `CarCheckupTest`. Na tym etapie przechodzi tylko pierwszy test, drugi reprezentuje bowiem sytuację, w której chcemy zmodyfikować proces mycia samochodu tak, aby było użyte woskowanie (klasa `WaxCarWash`)
 * Zastanowić się, jak bardzo skomplikowane (przy obecnym kształcie klasy `CarCheckup`) będzie doprowadzenie do tego aby drugi test przeszedł ?
 * Sprawić, aby klasa `CarCheckup` otrzymywała swoją zależność (`CarService`) "z zewnątrz" zamiast ją tworzyć.
 * Zastanowić się, czy zależność klasy `CarCheckup` musi być konkretną klasą ? Jeśli nie - to czym ją zastąpić ? 
 * Dokonać ekstrakcji interfejsu `CarServicing` i uczynić go zależnością klasy `CarCheckup`
+
+### Interface Segregation Principle
+
 * Zastanowić się, czy interfejs `CarServicing` jest spójny i czy nie należałoby go "rozseparować" na mniejsze kawałki ? Jeśli tak - dokonać podziału.
 * Czy na tym etapie da się już dać "wpiąć" woskowanie z klasy `WaxCarWash` ? Jeśli tak - doprowadzić do działania drugi test.
+
+### Single Responsibility Principle
+
 * Zastanowić się, czy klasa `CarService` nie ma za dużo odpowiedzialności ? Jeśli tak - dokonać jej podziału.
 
 ### Open-Closed Principle
