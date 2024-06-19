@@ -4,7 +4,7 @@ import com.chrosciu.solid.utils.Log;
 
 public class WaxCarWash {
     private final Log log = Log.getInstance();
-    
+
     public void wash() {
         washBody();
         washWindows();
