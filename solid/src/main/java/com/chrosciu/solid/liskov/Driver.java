@@ -3,11 +3,14 @@ package com.chrosciu.solid.liskov;
 public class Driver {
     public void drive(Vehicle vehicle) {
         vehicle.startEngine();
-        if (vehicle instanceof TeslaVehicle) {
-            TeslaVehicle teslaVehicle = (TeslaVehicle) vehicle;
-            teslaVehicle.chargeBatteries();
-        }
         vehicle.ride();
         vehicle.stopEngine();
+    }
+
+    public void driveTesla(TeslaVehicle teslaVehicle) {
+        teslaVehicle.startEngine();
+        teslaVehicle.chargeBatteries();
+        teslaVehicle.ride();
+        teslaVehicle.stopEngine();
     }
 }
