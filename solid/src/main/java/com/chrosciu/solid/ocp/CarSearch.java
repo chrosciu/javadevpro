@@ -10,13 +10,15 @@ import java.util.stream.Collectors;
 public class CarSearch {
     private final CarRepository repository;
 
-//    public List<Car> findByName(String name) {
-//        return repository.getCars().stream().filter(c -> name.equals(c.getName())).collect(Collectors.toList());
-//    }
+    @Deprecated
+    public List<Car> findByName(String name) {
+        return findBy(new CarNamePredicate(name));
+    }
 
-//    public List<Car> findByMaxPrice(int maxPrice) {
-//        return repository.getCars().stream().filter(c -> c.getPrice() <= maxPrice).collect(Collectors.toList());
-//    }
+    @Deprecated
+    public List<Car> findByMaxPrice(int maxPrice) {
+        return findBy(new CarMaxPricePredicate(maxPrice));
+    }
 
     public List<Car> findBy(Predicate<Car> carPredicate) {
         return repository.getCars().stream().filter(carPredicate).collect(Collectors.toList());
