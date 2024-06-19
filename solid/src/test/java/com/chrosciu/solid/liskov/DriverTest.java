@@ -17,7 +17,7 @@ public class DriverTest {
 
     @Test
     public void shouldDriveVehicle() {
-        Vehicle vehicle = new Vehicle();
+        Vehicle vehicle = new Vehicle(new BaseVehicle());
 
         driver.drive(vehicle);
 
@@ -26,7 +26,7 @@ public class DriverTest {
 
     @Test
     public void shouldDriveTeslaVehicle() {
-        TeslaVehicle teslaVehicle = new TeslaVehicle();
+        TeslaVehicle teslaVehicle = new TeslaVehicle(new BaseVehicle());
 
         driver.driveTesla(teslaVehicle);
 

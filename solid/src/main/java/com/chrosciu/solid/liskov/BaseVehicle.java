@@ -2,7 +2,7 @@ package com.chrosciu.solid.liskov;
 
 import com.chrosciu.solid.utils.Log;
 
-abstract public class AbstractVehicle {
+public class BaseVehicle {
     private final Log log = Log.getInstance();
 
     public void startEngine() {
