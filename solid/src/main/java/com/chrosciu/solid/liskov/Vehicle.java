@@ -1,20 +1,10 @@
 package com.chrosciu.solid.liskov;
 
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.Delegate;
 
 @RequiredArgsConstructor
-public class Vehicle {
+public class Vehicle implements VehicleBehavior {
+    @Delegate
     private final BaseVehicle baseVehicle;
-
-    public void startEngine() {
-        baseVehicle.startEngine();
-    }
-
-    public void ride() {
-        baseVehicle.ride();
-    }
-
-    public void stopEngine() {
-        baseVehicle.stopEngine();
-    }
 }

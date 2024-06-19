@@ -1,9 +1,12 @@
 package com.chrosciu.solid.liskov;
 
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.Delegate;
+
 
 @RequiredArgsConstructor
-public class TeslaVehicle {
+public class TeslaVehicle implements VehicleBehavior {
+    @Delegate
     private final BaseVehicle baseVehicle;
 
     private boolean charged = false;
@@ -12,18 +15,12 @@ public class TeslaVehicle {
         charged = true;
     }
 
-    public void startEngine() {
-        baseVehicle.startEngine();
-    }
-
-    public void ride() {
+    public void rideAsTesla() {
         if (!charged) {
             throw new IllegalStateException("Cannot ride on discharged batteries!");
         }
         baseVehicle.ride();
     }
 
-    public void stopEngine() {
-        baseVehicle.stopEngine();
-    }
+
 }

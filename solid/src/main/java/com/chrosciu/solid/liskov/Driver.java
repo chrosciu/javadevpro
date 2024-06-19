@@ -10,7 +10,7 @@ public class Driver {
     public void driveTesla(TeslaVehicle teslaVehicle) {
         teslaVehicle.startEngine();
         teslaVehicle.chargeBatteries();
-        teslaVehicle.ride();
+        teslaVehicle.rideAsTesla();
         teslaVehicle.stopEngine();
     }
 }
