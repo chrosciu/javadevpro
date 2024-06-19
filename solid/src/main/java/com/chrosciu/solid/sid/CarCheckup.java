@@ -1,15 +1,16 @@
 package com.chrosciu.solid.sid;
 
-public class CarCheckup {
-    private final CarServicing carServicing;
+import lombok.RequiredArgsConstructor;
 
-    public CarCheckup(CarServicing carServicing) {
-        this.carServicing = carServicing;
-    }
+@RequiredArgsConstructor
+public class CarCheckup {
+    private final CarLiquidChecking carLiquidChecking;
+    private final CarVacuuming carVacuuming;
+    private final CarWashing carWashing;
 
     public void performCheckup() {
-        carServicing.checkLiquids();
-        carServicing.vacuum();
-        carServicing.wash();
+        carLiquidChecking.checkLiquids();
+        carVacuuming.vacuum();
+        carWashing.wash();
     }
 }
