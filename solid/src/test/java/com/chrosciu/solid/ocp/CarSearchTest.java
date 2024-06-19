@@ -26,7 +26,7 @@ public class CarSearchTest {
 
     @Test
     public void shouldBeAbleToPerformSearchByMaxPrice() {
-        List<Car> foundCars = List.of(); // carSearch.findByMaxPrice(1200)
+        List<Car> foundCars = carSearch.findByMaxPrice(1200);
 
         assertThat(foundCars).containsExactlyInAnyOrder(FIAT_PUNTO, POLONEZ_CARO);
     }

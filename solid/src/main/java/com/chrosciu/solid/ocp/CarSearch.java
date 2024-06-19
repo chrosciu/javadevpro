@@ -12,4 +12,8 @@ public class CarSearch {
     public List<Car> findByName(String name) {
         return repository.getCars().stream().filter(c -> name.equals(c.getName())).collect(Collectors.toList());
     }
+
+    public List<Car> findByMaxPrice(int maxPrice) {
+        return repository.getCars().stream().filter(c -> c.getPrice() <= maxPrice).collect(Collectors.toList());
+    }
 }
