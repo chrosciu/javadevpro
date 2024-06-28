@@ -2,9 +2,20 @@ package com.chrosciu.solid.sid;
 
 import com.chrosciu.solid.utils.Log;
 
-public class WaxCarWash {
+public class WaxCarWash implements CarServicing {
     private final Log log = Log.getInstance();
-    
+
+    @Override
+    public void checkLiquids() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void vacuum() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
     public void wash() {
         washBody();
         washWindows();
