@@ -2,6 +2,7 @@ package com.chrosciu.solid.ocp;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.EnumSet;
 import java.util.List;
 
 import static com.chrosciu.solid.ocp.Color.BLACK;
@@ -33,7 +34,7 @@ public class CarSearchTest {
 
     @Test
     public void shouldBeAbleToPerformSearchByGivenColors() {
-        List<Car> foundCars = List.of(); // carSearch.findBy .... (EnumSet.of(WHITE, BLACK))
+        List<Car> foundCars = carSearch.findBy(new CarColorsFilter(EnumSet.of(WHITE, BLACK)));
 
         assertThat(foundCars).containsExactlyInAnyOrder(FIAT_PUNTO, VW_PASSAT);
     }

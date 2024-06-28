@@ -21,6 +21,6 @@ public class CarSearch {
 
     @Deprecated
     public List<Car> findByMaxPrice(int maxPrice) {
-        return repository.getCars().stream().filter(c -> maxPrice >= c.getPrice()).collect(Collectors.toList());
+        return findBy(new CarMaxPriceFilter(maxPrice));
     }
 }
