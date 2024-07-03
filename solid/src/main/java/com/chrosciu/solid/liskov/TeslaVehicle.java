@@ -1,17 +1,21 @@
 package com.chrosciu.solid.liskov;
 
-public class TeslaVehicle extends AbstractVehicle {
+import lombok.experimental.Delegate;
+
+public class TeslaVehicle {
+    @Delegate
+    private final VehicleMixin vehicleMixin = new VehicleMixin();
+
     private boolean charged = false;
 
     public void chargeBatteries() {
         charged = true;
     }
 
-    @Override
     public void ride() {
         if (!charged) {
             throw new IllegalStateException("Cannot ride on discharged batteries!");
         }
-        super.ride();
+        vehicleMixin.ride();
     }
 }

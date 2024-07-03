@@ -1,4 +1,8 @@
 package com.chrosciu.solid.liskov;
 
-public class Vehicle extends AbstractVehicle {
+import lombok.experimental.Delegate;
+
+public class Vehicle {
+    @Delegate
+    private final VehicleMixin vehicleMixin = new VehicleMixin();
 }

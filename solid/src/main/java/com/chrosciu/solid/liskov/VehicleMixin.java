@@ -1,12 +1,8 @@
 package com.chrosciu.solid.liskov;
 
 import com.chrosciu.solid.utils.Log;
-import lombok.RequiredArgsConstructor;
 
-import static lombok.AccessLevel.PROTECTED;
-
-@RequiredArgsConstructor(access = PROTECTED)
-public abstract class AbstractVehicle {
+public class VehicleMixin {
     private final Log log = Log.getInstance();
 
     public void startEngine() {
