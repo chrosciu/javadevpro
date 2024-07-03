@@ -1,8 +1,12 @@
 package com.chrosciu.patterns.behavioral.observer;
 
 import lombok.Getter;
+import lombok.experimental.Delegate;
 
-class Checkbox extends AbstractPublisher implements Subscriber {
+class Checkbox implements Subscriber {
+    @Delegate
+    private final PublisherMixin publisherMixin = new PublisherMixin();
+
     @Getter
     private boolean checked = false;
 

@@ -2,8 +2,12 @@ package com.chrosciu.patterns.behavioral.observer;
 
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.experimental.Delegate;
 
-class Input extends AbstractPublisher implements Subscriber {
+class Input implements Subscriber {
+    @Delegate
+    private final PublisherMixin publisherMixin = new PublisherMixin();
+
     @Getter
     private String text = "";
 
